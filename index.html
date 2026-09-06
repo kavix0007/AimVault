@@ -90,22 +90,23 @@ header{position:sticky;top:0;z-index:50;background:rgba(9,13,20,.86);backdrop-fi
 .card-actions button{width:100%;padding:8px 6px;font-size:11px}
 .empty{grid-column:1/-1;padding:35px;text-align:center;color:var(--dim)}
 
-/* Pro crosshairs — single-line auto-scrolling marquee */
-.marquee-wrap{overflow:hidden;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
-.marquee-track{display:flex;gap:12px;width:max-content;animation:marquee 26s linear infinite}
-.marquee-track:hover{animation-play-state:paused}
-.marquee-track .card{flex:0 0 220px}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@media(prefers-reduced-motion:reduce){.marquee-track{animation:none}}
+/* Library controls */
+.library-tabs{display:flex;align-items:center;gap:18px}
+.library-tab{background:none;border:0;border-bottom:2px solid transparent;color:var(--dim);padding:8px 0;font:700 11px Inter;letter-spacing:.04em;cursor:pointer}
+.library-tab.active,.library-tab:hover{color:var(--text);border-bottom-color:var(--accent)}
+.toolbar{display:flex;align-items:center;gap:12px;margin-bottom:22px;padding:12px 0;border-bottom:1px solid var(--border-soft)}
+.toolbar-group{display:flex;align-items:center;gap:9px;min-width:0}
+.toolbar-label{font:700 10px Inter;color:var(--dim2);letter-spacing:.04em;white-space:nowrap}
+.toolbar .filters{display:flex;gap:7px;flex-wrap:nowrap;margin:0}
+.toolbar .filter{padding:7px 12px}
+.search-group{flex:1}
+.search-group input{width:100%;min-width:140px;background:var(--panel2);border:1px solid var(--border);color:var(--text);border-radius:6px;padding:10px 12px;font:12px Inter;outline:none}
+.sort-group select{background:var(--panel2);border:1px solid var(--border);color:var(--text);border-radius:6px;padding:9px 34px 9px 12px;font:600 11px Inter;outline:none}
+.copy-count{font:10px Inter;color:var(--dim2);text-align:right;margin-top:-3px;margin-bottom:8px}
+.pro-badge{color:var(--gold);font-weight:700}
+@media(max-width:900px){.toolbar{flex-wrap:wrap}.search-group{order:3;flex-basis:100%}.toolbar .filters{flex-wrap:wrap}}
+@media(max-width:760px){.library-tabs{display:none}}
 
-.final{text-align:center;padding:56px 24px;border:1px solid var(--border);background:linear-gradient(160deg,var(--panel) 0%,var(--panel2) 100%);border-radius:10px}
-.final h2{font-size:28px;margin:0 0 10px;font-weight:700}
-.final p{color:var(--dim);font:13px Inter;margin:0 0 22px}
-.final-form{display:flex;gap:8px;max-width:380px;margin:0 auto;justify-content:center}
-.final-form input{flex:1;background:var(--panel2);border:1px solid var(--border);color:var(--text);border-radius:6px;padding:11px 13px;font:13px Inter;outline:none;transition:border-color .15s}
-.final-form input:focus{border-color:#3a4b5c}
-.contact-note{margin-top:14px;color:var(--dim2);font:12px Inter}
-.contact-note a{color:var(--accent2);font-weight:600}
 
 .footer{border-top:1px solid var(--border-soft);padding:26px 0 40px;color:var(--dim2);font:11px Inter}
 .footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
@@ -119,7 +120,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(9,13,20,.86);backdrop-fi
 </style>
 </head>
 <body>
-<header><div class="wrap nav"><a class="logo" href="./"><span class="logo-mark"><svg width="17" height="17" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="11" stroke="#ff4655" stroke-width="3"/><line x1="20" y1="1" x2="20" y2="11" stroke="#ff4655" stroke-width="3"/><line x1="20" y1="29" x2="20" y2="39" stroke="#ff4655" stroke-width="3"/><line x1="1" y1="20" x2="11" y2="20" stroke="#ff4655" stroke-width="3"/><line x1="29" y1="20" x2="39" y2="20" stroke="#ff4655" stroke-width="3"/></svg></span>Aim<em>Vault</em></a><nav class="navlinks"><a href="#pros">Pro Crosshairs</a><a href="#crosshairs">Crosshairs</a><a href="#contact">Contact</a></nav></div></header>
+<header><div class="wrap nav"><a class="logo" href="./"><span class="logo-mark"><svg width="17" height="17" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="11" stroke="#ff4655" stroke-width="3"/><line x1="20" y1="1" x2="20" y2="11" stroke="#ff4655" stroke-width="3"/><line x1="20" y1="29" x2="20" y2="39" stroke="#ff4655" stroke-width="3"/><line x1="1" y1="20" x2="11" y2="20" stroke="#ff4655" stroke-width="3"/><line x1="29" y1="20" x2="39" y2="20" stroke="#ff4655" stroke-width="3"/></svg></span>Aim<em>Vault</em></a><nav class="navlinks"><a href="#crosshairs">Crosshairs</a><a href="#crosshairs">Pro Players</a></nav></div></header>
 <main>
 <section class="hero"><div class="wrap"><div class="hero-inner">
 <div class="eyebrow">Valorant crosshair library</div>
@@ -127,61 +128,175 @@ header{position:sticky;top:0;z-index:50;background:rgba(9,13,20,.86);backdrop-fi
 <p>Browse crosshair codes and reference images, then copy the exact import code straight into Valorant.</p>
 </div></div></section>
 
-<section class="section" id="pros"><div class="wrap">
-<div class="section-head"><div><h2>Pro Crosshair Codes</h2><p>Public reference configurations from top players.</p></div><span class="section-tag">Verified players</span></div>
-<div class="marquee-wrap"><div class="marquee-track" id="proGrid"></div></div>
-</div></section>
+<section class="section" id="crosshairs">
+  <div class="wrap">
+    <div class="section-head">
+      <div><h2>Discover</h2><p>Find your next Valorant crosshair</p></div>
+      <div class="library-tabs">
+        <button class="library-tab active" data-sort="copies">MOST COPIED</button>
+        <button class="library-tab" data-sort="recent">LAST 7 DAYS</button>
+        <button class="library-tab" data-sort="explore">EXPLORE</button>
+      </div>
+    </div>
 
-<section class="section" id="crosshairs"><div class="wrap">
-<div class="section-head"><div><h2>Popular Crosshair Codes</h2><p>Browse the library and copy any code.</p></div></div>
-<div class="searchbar"><input id="search" type="search" placeholder="Search crosshairs, styles or players…"></div>
-<div class="filters" id="filters"></div>
-<div class="grid" id="crosshairGrid"></div>
-</div></section>
+    <div class="toolbar">
+      <div class="toolbar-group">
+        <span class="toolbar-label">SHOW:</span>
+        <div class="filters" id="filters"></div>
+      </div>
+      <div class="toolbar-group search-group">
+        <span class="toolbar-label">SEARCH FOR:</span>
+        <input id="search" type="search" placeholder="Search...">
+      </div>
+      <div class="toolbar-group sort-group">
+        <span class="toolbar-label">SORT BY:</span>
+        <select id="sort">
+          <option value="recent">Top Last 7 Days</option>
+          <option value="copies">Most Copied</option>
+          <option value="newest">Newest</option>
+        </select>
+      </div>
+    </div>
 
-<section class="section" id="contact"><div class="wrap"><div class="final">
-<h2>Add your crosshair to AimVault</h2>
-<p>Send your crosshair image and code by email and we'll add it to the library.</p>
-<form class="final-form" onsubmit="event.preventDefault();window.location.href='mailto:submit@aimvault.gg?subject=Crosshair%20submission';">
-<input type="email" placeholder="your@email.com" required>
-<button type="submit" class="btn btn-red">Get in touch</button>
-</form>
-<div class="contact-note">Or email us directly at <a href="mailto:submit@aimvault.gg">submit@aimvault.gg</a></div>
-</div></div></section>
+    <div class="grid" id="crosshairGrid"></div>
+  </div>
+</section>
 </main>
 <footer class="footer"><div class="wrap footer-row"><div style="display:flex;align-items:center;gap:9px"><span class="logo-mark" style="width:22px;height:22px;border-radius:5px"><svg width="12" height="12" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="11" stroke="#ff4655" stroke-width="3"/><line x1="20" y1="1" x2="20" y2="11" stroke="#ff4655" stroke-width="3"/><line x1="20" y1="29" x2="20" y2="39" stroke="#ff4655" stroke-width="3"/><line x1="1" y1="20" x2="11" y2="20" stroke="#ff4655" stroke-width="3"/><line x1="29" y1="20" x2="39" y2="20" stroke="#ff4655" stroke-width="3"/></svg></span>© <span id="year"></span> AimVault. Not affiliated with Riot Games.</div><div>Valorant crosshair codes • previews • library</div></div></footer> <div class="toast" id="toast"></div>
 <script>
-const crosshairs=[
-{name:'Small Cyan',category:'Small • Cyan',color:'cyan',image:'https://cdn.phototourl.com/free/2026-08-31-8beddda9-408d-4ff3-b5d0-b315f5d99cf5.png',code:'0;P;c;0;h;0;0l;4;0o;2;0a;1;0f;0;1b;0'},
-{name:'Classic White',category:'Minimal • White',color:'white',image:'',code:'0;P;c;0;h;0;0l;4;0o;2;0a;1;0f;0;1b;0'},
-{name:'Green Precision',category:'Minimal • Green',color:'green',image:'',code:'0;P;c;1;h;0;0l;2;0o;2;0a;1;0f;0;1b;0'},
-{name:'Cyan Dot',category:'Dot • Cyan',color:'cyan',image:'',code:'0;P;c;5;h;0;d;1;z;1;0b;0;1b;0'},
-{name:'Clean Red',category:'Minimal • Red',color:'red',image:'',code:'0;P;c;7;h;0;0l;3;0o;2;0a;1;0f;0;1b;0'},
-{name:'Custom Pink',category:'Custom • Pink',color:'pink',image:'',code:'0;P;c;8;u;F33D86FF;o;1;d;1;b;1;m;1;0t;4;0l;1;0v;8;0g;1;0o;1;0a;1;0f;0;1t;10;1l;3;1v;0;1g;1;1o;1;1a;1;1f;0;1s;0'},
-{name:'Compact Yellow',category:'Small • Yellow',color:'yellow',image:'',code:'0;P;c;4;h;0;0l;3;0o;1;0a;1;0f;0;1b;0'},
-{name:'Tiny White Dot',category:'Dot • White',color:'white',image:'',code:'0;P;c;0;h;0;d;1;z;1;0b;0;1b;0'}
+/*
+  ADDING A PRO CROSSHAIR:
+  Set isPro:true on the same crosshair object.
+  It will automatically appear in BOTH the main library and the Pro filter.
+
+  copies = your starting/public copy count.
+  On a static GitHub Pages site, copy-count changes are stored per browser.
+  True global counts require a backend/database.
+*/
+const crosshairs = [
+  {name:'Small Cyan',category:'Teams',player:'',isPro:false,image:'https://cdn.phototourl.com/free/2026-08-31-8beddda9-408d-4ff3-b5d0-b315f5d99cf5.png',code:'0;P;c;0;h;0;0l;4;0o;2;0a;1;0f;0;1b;0',copies:0,added:'2026-09-06'},
+  {name:'Classic White',category:'Other',player:'',isPro:false,image:'',code:'0;P;c;0;h;0;0l;4;0o;2;0a;1;0f;0;1b;0',copies:0,added:'2026-09-06'},
+  {name:'Green Precision',category:'Other',player:'',isPro:false,image:'',code:'0;P;c;1;h;0;0l;2;0o;2;0a;1;0f;0;1b;0',copies:0,added:'2026-09-06'},
+  {name:'Cyan Dot',category:'Fun',player:'',isPro:false,image:'',code:'0;P;c;5;h;0;d;1;z;1;0b;0;1b;0',copies:0,added:'2026-09-06'},
+  {name:'Clean Red',category:'Other',player:'',isPro:false,image:'',code:'0;P;c;7;h;0;0l;3;0o;2;0a;1;0f;0;1b;0',copies:0,added:'2026-09-06'},
+  {name:'Custom Pink',category:'Fun',player:'',isPro:false,image:'',code:'0;P;c;8;u;F33D86FF;o;1;d;1;b;1;m;1;0t;4;0l;1;0v;8;0g;1;0o;1;0a;1;0f;0;1t;10;1l;3;1v;0;1g;1;1o;1;1a;1;1f;0;1s;0',copies:0,added:'2026-09-06'},
+  {name:'Compact Yellow',category:'Other',player:'',isPro:false,image:'',code:'0;P;c;4;h;0;0l;3;0o;1;0a;1;0f;0;1b;0',copies:0,added:'2026-09-06'},
+  {name:'Tiny White Dot',category:'Fun',player:'',isPro:false,image:'',code:'0;P;c;0;h;0;d;1;z;1;0b;0;1b;0',copies:0,added:'2026-09-06'},
+
+  /* Example pro entries — add more here with isPro:true */
+  {name:'TenZ',category:'Teams',player:'TenZ',isPro:true,image:'https://cdn.phototourl.com/free/2026-08-31-8beddda9-408d-4ff3-b5d0-b315f5d99cf5.png',code:'0;s;1;P;c;5;h;0;m;1;0l;4;0o;2;0a;1;0f;0;1b;0;S;c;4;o;1',copies:0,added:'2026-09-06'},
+  {name:'small dot',category:'Teams',player:'',isPro:true,image:'https://cdn.phototourl.com/free/2026-09-02-fe0e12b1-537a-4a3e-8d9d-f0c54e6c2863.png',code:'0;P;d;1;f;0;0t;4;0l;1;0o;0;0a;1;0f;0;1b;0',copies:0,added:'2026-09-06'},
+  {name:'Aim bot',category:'Teams',player:'',isPro:true,image:'https://cdn.phototourl.com/free/2026-09-03-4de9ed7e-e591-4c5f-aaba-813fc6de20e0.png',code:'0;s;1;P;o;0.1;f;0;s;0;0t;1;0l;2;0o;1;0a;1;0f;0;1b;0',copies:0,added:'2026-09-06'},
+  {name:'nAts',category:'Teams',player:'nAts',isPro:true,image:'',code:'0;P;c;1;o;1;0a;1;0l;2;0t;1;0o;2;0f;0;1b;0',copies:0,added:'2026-09-06'}
 ];
-const pros=[
-{name:'TenZ',meta:'Public reference code',color:'cyan',image:'https://cdn.phototourl.com/free/2026-08-31-8beddda9-408d-4ff3-b5d0-b315f5d99cf5.png',code:'0;s;1;P;c;5;h;0;m;1;0l;4;0o;2;0a;1;0f;0;1b;0;S;c;4;o;1'},
-{name:'small dot',meta:'Public reference code',color:'white',image:'https://cdn.phototourl.com/free/2026-09-02-fe0e12b1-537a-4a3e-8d9d-f0c54e6c2863.png',code:'0;P;d;1;f;0;0t;4;0l;1;0o;0;0a;1;0f;0;1b;0'},
-{name:'Aim bot',meta:'Public reference code',color:'white',image:'https://cdn.phototourl.com/free/2026-09-03-4de9ed7e-e591-4c5f-aaba-813fc6de20e0.png',code:'0;s;1;P;o;0.1;f;0;s;0;0t;1;0l;2;0o;1;0a;1;0f;0;1b;0'},
-{name:'nAts',meta:'Public reference code',color:'green',image:'',code:'0;P;c;1;o;1;0a;1;0l;2;0t;1;0o;2;0f;0;1b;0'}
-];
-const filters=['All','Small','Dot','Minimal','Cyan','Green','Red','Yellow'];let active='All';
-function miniPreview(item,isPro){const img=item.image?`<img src="${item.image}" alt="${item.name} crosshair" loading="lazy" draggable="false">`:`<div class="image-placeholder">Add image URL</div>`;const badge=isPro?'<div class="badge-pro">Pro</div>':'';return `<div class="preview">${badge}${img}</div>`}
-function card(item,isPro){return `<article class="panel card">${miniPreview(item,isPro)}<h3>${item.name}</h3><div class="meta">${item.category||item.meta}</div><code class="code">${item.code}</code><div class="card-actions"><button class="btn btn-dark copy" data-code="${encodeURIComponent(item.code)}">⧉ Copy code</button></div></article>`}
-function render(){
-  const q=document.getElementById('search').value.toLowerCase();
-  const list=crosshairs.filter(x=>(active==='All'||(x.category+' '+x.color).toLowerCase().includes(active.toLowerCase()))&&(x.name+' '+x.category+' '+x.color).toLowerCase().includes(q));
-  document.getElementById('crosshairGrid').innerHTML=list.length?list.map(x=>card(x,false)).join(''):'<div class="panel empty">No crosshairs found.</div>';
-  // duplicate the pro list so the marquee loop (translateX -50%) is seamless
-  document.getElementById('proGrid').innerHTML=[...pros,...pros].map(x=>card(x,true)).join('');
-  document.getElementById('filters').innerHTML=filters.map(x=>`<button class="filter ${x===active?'active':''}" data-filter="${x}">${x}</button>`).join('');
+
+const filters=['All','Teams','Fun','Other'];
+let active='All';
+let activeTab='copies';
+const COUNT_KEY='aimvault_copy_counts_v2';
+
+function getCounts(){
+  try{return JSON.parse(localStorage.getItem(COUNT_KEY)||'{}')}catch(e){return {}}
 }
-function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(window.__t);window.__t=setTimeout(()=>t.classList.remove('show'),1600)}
-async function copyCode(code){try{await navigator.clipboard.writeText(code);toast('Code copied.')}catch(e){window.prompt('Copy code:',code)}}
-document.addEventListener('click',e=>{const f=e.target.closest('[data-filter]');if(f){active=f.dataset.filter;render();return}const c=e.target.closest('.copy');if(c){copyCode(decodeURIComponent(c.dataset.code));return}});
-document.getElementById('search').addEventListener('input',render);document.getElementById('year').textContent=new Date().getFullYear();render();
+function countFor(item){
+  const counts=getCounts();
+  return Number(item.copies||0)+Number(counts[item.code]||0);
+}
+function formatCopies(n){
+  n=Number(n)||0;
+  if(n>=1000000)return (n/1000000).toFixed(n%1000000>=100000?1:0)+'M';
+  if(n>=1000)return (n/1000).toFixed(n%1000>=100?1:0)+'K';
+  return String(n);
+}
+function safe(s){
+  return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+}
+function miniPreview(item){
+  const img=item.image
+    ? `<img src="${safe(item.image)}" alt="${safe(item.name)} crosshair" loading="lazy" draggable="false">`
+    : `<div class="image-placeholder">Add image URL</div>`;
+  const badge=item.isPro?'<div class="badge-pro">PRO</div>':'';
+  return `<div class="preview">${badge}${img}</div>`;
+}
+function card(item){
+  const total=countFor(item);
+  const player=item.player?` • ${safe(item.player)}`:'';
+  return `<article class="panel card">
+    ${miniPreview(item)}
+    <h3>${safe(item.name)}</h3>
+    <div class="meta">${safe(item.category)}${player}</div>
+    <code class="code">${safe(item.code)}</code>
+    <div class="copy-count">${formatCopies(total)} ${total===1?'copy':'copies'}</div>
+    <div class="card-actions">
+      <button class="btn btn-dark copy" data-code="${encodeURIComponent(item.code)}">⧉ Copy code</button>
+    </div>
+  </article>`;
+}
+function sorted(list){
+  if(activeTab==='copies') return [...list].sort((a,b)=>countFor(b)-countFor(a));
+  if(activeTab==='recent') return [...list].sort((a,b)=>new Date(b.added)-new Date(a.added));
+  return [...list];
+}
+function render(){
+  const q=document.getElementById('search').value.toLowerCase().trim();
+  const sort=document.getElementById('sort').value;
+
+  let list=crosshairs.filter(x=>{
+    const categoryOk=active==='All'||x.category===active;
+    const searchOk=(x.name+' '+x.category+' '+x.player).toLowerCase().includes(q);
+    return categoryOk&&searchOk;
+  });
+
+  if(sort==='copies') list.sort((a,b)=>countFor(b)-countFor(a));
+  if(sort==='recent') list.sort((a,b)=>new Date(b.added)-new Date(a.added));
+  if(sort==='newest') list.sort((a,b)=>new Date(b.added)-new Date(a.added));
+
+  if(activeTab==='copies' && sort==='recent') list=sorted(list);
+
+  document.getElementById('crosshairGrid').innerHTML=
+    list.length?list.map(card).join(''):'<div class="panel empty">No crosshairs found.</div>';
+
+  document.getElementById('filters').innerHTML=filters.map(x=>
+    `<button class="filter ${x===active?'active':''}" data-filter="${x}">${x}</button>`
+  ).join('');
+
+  document.querySelectorAll('.library-tab').forEach(x=>{
+    x.classList.toggle('active',x.dataset.sort===activeTab);
+  });
+}
+function toast(m){
+  const t=document.getElementById('toast');
+  t.textContent=m;t.classList.add('show');
+  clearTimeout(window.__t);
+  window.__t=setTimeout(()=>t.classList.remove('show'),1600);
+}
+async function copyCode(code){
+  const item=crosshairs.find(x=>x.code===code);
+  try{
+    await navigator.clipboard.writeText(code);
+    if(item){
+      const counts=getCounts();
+      counts[code]=(Number(counts[code])||0)+1;
+      localStorage.setItem(COUNT_KEY,JSON.stringify(counts));
+    }
+    toast('Code copied.');
+    render();
+  }catch(e){
+    window.prompt('Copy code:',code);
+  }
+}
+document.addEventListener('click',e=>{
+  const f=e.target.closest('[data-filter]');
+  if(f){active=f.dataset.filter;render();return}
+  const tab=e.target.closest('.library-tab');
+  if(tab){activeTab=tab.dataset.sort;render();return}
+  const c=e.target.closest('.copy');
+  if(c){copyCode(decodeURIComponent(c.dataset.code));return}
+});
+document.getElementById('search').addEventListener('input',render);
+document.getElementById('sort').addEventListener('change',render);
+document.getElementById('year').textContent=new Date().getFullYear();
+render();
 </script>
 </body>
 </html>
