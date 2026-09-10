@@ -1,19 +1,14 @@
-# AimVault — Deploy Ready
+# AimVault — Flat Deployable Version
 
-This folder is a static website and can be deployed directly to GitHub Pages, Netlify, Vercel, Cloudflare Pages, or any normal web host.
+This version keeps the same root-level deployment format as the old site:
 
-## Files
-- `index.html` — complete website
-- `default.webp` — AimVault default preview background
+- `index.html` — complete homepage, database, search, filters, copy buttons, categories, pro section and SEO content
+- `default.webp` — original AimVault preview background
+- `robots.txt` — crawl rules + sitemap
+- `sitemap.xml` — only the real homepage is listed for Phase 1
+- `CNAME` — `aimvault.online`
+- `.nojekyll` — GitHub Pages compatibility
 
-## GitHub Pages
-1. Create a GitHub repository.
-2. Upload `index.html` and `default.webp` to the repository root.
-3. Open **Settings → Pages**.
-4. Choose **Deploy from a branch** and select the main branch / root folder.
-5. Save and wait for GitHub to publish the site.
+The homepage uses the original crosshair dataset from the old `index.html` and keeps the existing browser-local copy counter behavior.
 
-## Important
-The current copy counter is browser-local (`localStorage`). It is not a global counter shared by all visitors. A real global copy counter requires a backend/database.
-
-The site is not affiliated with Riot Games.
+Future category/pro/guide URLs should only be added to the sitemap after real pages exist.
