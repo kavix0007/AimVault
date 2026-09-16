@@ -2,8 +2,8 @@
 // Paste ONLY your Supabase Project URL and PUBLIC publishable/anon key here.
 // Never put a Supabase secret/service_role key in this file.
 window.AIMVAULT_SUPABASE = {
-  url: 'PASTE_YOUR_SUPABASE_PROJECT_URL_HERE',
-  anonKey: 'PASTE_YOUR_SUPABASE_PUBLISHABLE_OR_ANON_KEY_HERE'
+  url: 'https://njaizvkazcvtxdirrvjz.supabase.co/rest/v1/',
+  anonKey: 'sb_publishable_fJFR8UdW_E0TT_eSRsuRWw_YEb_bBja'
 };
 
 window.AimVaultSupabaseConfig = {
