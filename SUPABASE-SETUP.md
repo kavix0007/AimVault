@@ -1,55 +1,35 @@
 # AimVault V2 — Supabase setup
 
-AimVault is still a static GitHub Pages site. Supabase provides the database, admin authentication and image storage.
+AimVault remains a static GitHub Pages site. Supabase provides the database and admin authentication. **Images are supplied as normal external image URLs; Supabase Storage is not used.**
 
-## 1. Create a Supabase project
-Create a project in Supabase, then open **Project Settings → API**. Copy the project URL and the public **publishable/anon** key.
+## 1. Create the Supabase project
+Create a Supabase project, then copy the Project URL and public publishable/anon key from Project Settings → API.
 
-## 2. Run the database setup
-Open **SQL Editor**, paste everything from `supabase/schema.sql`, and run it.
+## 2. Database
+Run `supabase/schema.sql` in the Supabase SQL Editor. It creates the `crosshairs` table, `admin_users` allowlist, indexes, RLS policies and the admin helper function. No Storage bucket is created.
 
-The script creates:
-- `crosshairs` database table
-- `admin_users` allowlist
-- Row Level Security policies
-- `crosshair-images` public image bucket
-- existing AimVault crosshair migration
+If your database is already working, **do not rerun the seed section just to deploy the website**. Your live database is separate from the GitHub files.
 
-The migration is safe to re-run because the inserted rows use the table's generated IDs and `on conflict do nothing`; if you already imported the rows, don't duplicate them manually.
-
-## 3. Create the admin account
-Open **Authentication → Users → Add user** and create your admin email/password.
-
-Then in SQL Editor run:
+## 3. Admin account
+Create the admin account under Authentication → Users, then add its UUID to `public.admin_users`.
 
 ```sql
 insert into public.admin_users(user_id)
-select id from auth.users where email = 'YOUR-ADMIN-EMAIL';
+select id from auth.users where email = 'YOUR-ADMIN-EMAIL'
+on conflict (user_id) do nothing;
 ```
 
-Do not enable public sign-ups for this admin system.
+## 4. Website configuration
+`assets/js/supabase-config.js` contains only the public Supabase URL and publishable/anon key. Never put a service_role/secret key in the website.
 
-## 4. Connect the website
-Edit:
+## 5. Crosshair workflow
+1. Open `/admin/login/`.
+2. Sign in.
+3. Enter name and Valorant code.
+4. Paste a direct image URL (optional).
+5. Select one or more categories.
+6. Choose Pro if applicable.
+7. Keep Published enabled when you want it public.
+8. Save.
 
-`assets/js/supabase-config.js`
-
-and replace the two placeholders with your Supabase project URL and public publishable/anon key.
-
-**Never put the service_role/secret key in the website.**
-
-## 5. Deploy
-Upload the contents of this ZIP to the root of your GitHub Pages repository. Keep `index.html` at the repository root.
-
-Admin login: `/admin/login/`
-Admin dashboard: `/admin/`
-
-## What happens after setup
-- Add one crosshair once in the dashboard.
-- Select any number of categories.
-- The same database row automatically appears on the homepage and every selected category page.
-- Pro is a checkbox and automatically controls the Pro page.
-- Editing a crosshair updates the same row everywhere.
-- Delete removes it from the public library.
-- Unpublished rows remain visible only to admins.
-- Copy buttons work without storing a copy counter.
+The single database row is then automatically displayed on the homepage, `/crosshair-codes/`, the selected `/crosshairs/<category>/` pages, and `/pro-crosshairs/` when Pro is checked. Editing or deleting the row updates/removes it everywhere.

@@ -2,21 +2,26 @@
 
 Valorant crosshair library built for GitHub Pages + Supabase.
 
-### Stack
+## Stack
 - HTML/CSS/vanilla JavaScript
 - GitHub Pages hosting
 - Supabase PostgreSQL
 - Supabase Auth for the private admin area
-- Supabase Storage for crosshair images
+- Image URLs only (no image upload and no Supabase Storage)
 
-### Main features
+## Main system
 - One database record per crosshair
-- Multi-category assignment
-- Pro checkbox
+- Select multiple categories when adding a crosshair
+- The same record automatically appears on the homepage and every selected category page
+- Pro checkbox automatically controls the Pro page
 - Add / edit / delete / publish / unpublish
-- Image upload
-- Homepage and category pages automatically read the database
+- Image URL field only
 - No copy counter
-- Existing SEO URLs and visual design preserved
+- Public pages show only published crosshairs
+- Admin can manage all crosshairs
+- Duplicate rendering is prevented by database row ID
 
-See `SUPABASE-SETUP.md` before deploying.
+## GitHub structure
+`index.html` is at the repository root. Public category pages live under `/crosshairs/<category>/`.
+
+See `SUPABASE-SETUP.md` for database and admin setup.
