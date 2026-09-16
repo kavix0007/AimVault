@@ -125,7 +125,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(9,13,20,.86);backdrop-fi
 .search-group{flex:1}
 .search-group input{width:100%;min-width:140px;background:var(--panel2);border:1px solid var(--border);color:var(--text);border-radius:6px;padding:10px 12px;font:12px Inter;outline:none}
 .sort-group select{background:var(--panel2);border:1px solid var(--border);color:var(--text);border-radius:6px;padding:9px 34px 9px 12px;font:600 11px Inter;outline:none}
-.copy-count{font:10px Inter;color:var(--dim2);text-align:right;margin-top:-3px;margin-bottom:8px}
+
 .pro-badge{color:var(--gold);font-weight:700}
 @media(max-width:900px){.toolbar{flex-wrap:wrap}.search-group{order:3;flex-basis:100%}.toolbar .filters{flex-wrap:wrap}}
 @media(max-width:760px){.library-tabs{display:none}}
@@ -142,7 +142,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(9,13,20,.86);backdrop-fi
 @media(max-width:500px){.wrap{padding:0 14px}.grid,.features{grid-template-columns:1fr}.hero h1{font-size:36px}}
 </style>
 </head>
-<body>
+<body data-page="library">
 <header><div class="wrap nav"><a class="logo" href="./"><span class="logo-mark"><svg width="17" height="17" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="11" stroke="#ff4655" stroke-width="3"/><line x1="20" y1="1" x2="20" y2="11" stroke="#ff4655" stroke-width="3"/><line x1="20" y1="29" x2="20" y2="39" stroke="#ff4655" stroke-width="3"/><line x1="1" y1="20" x2="11" y2="20" stroke="#ff4655" stroke-width="3"/><line x1="29" y1="20" x2="39" y2="20" stroke="#ff4655" stroke-width="3"/></svg></span>Aim<em>Vault</em></a><nav class="navlinks"><a href="/crosshair-codes/">Crosshairs</a><a href="/pro-crosshairs/">Pro Players</a></nav></div></header>
 <main>
 <section class="hero"><div class="wrap"><div class="hero-inner">
@@ -177,8 +177,6 @@ popular setups, minimalist designs, dot crosshairs and more.
       <div class="toolbar-group sort-group">
         <span class="toolbar-label">SORT BY:</span>
         <select id="sort">
-          <option value="recent">Top Last 7 Days</option>
-          <option value="copies">Most Copied</option>
           <option value="newest">Newest</option>
         </select>
       </div>
@@ -189,143 +187,5 @@ popular setups, minimalist designs, dot crosshairs and more.
 </section>
 </main>
 <footer class="footer"><div class="wrap footer-row"><div style="display:flex;align-items:center;gap:9px"><span class="logo-mark" style="width:22px;height:22px;border-radius:5px"><svg width="12" height="12" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="11" stroke="#ff4655" stroke-width="3"/><line x1="20" y1="1" x2="20" y2="11" stroke="#ff4655" stroke-width="3"/><line x1="20" y1="29" x2="20" y2="39" stroke="#ff4655" stroke-width="3"/><line x1="1" y1="20" x2="11" y2="20" stroke="#ff4655" stroke-width="3"/><line x1="29" y1="20" x2="39" y2="20" stroke="#ff4655" stroke-width="3"/></svg></span>© <span id="year"></span> AimVault. Not affiliated with Riot Games.</div><div>Valorant crosshair codes • previews • library</div></div></footer> <div class="toast" id="toast"></div>
-<script>
-/*
-  ADDING A PRO CROSSHAIR:
-  Set isPro:true on the same crosshair object.
-  It will automatically appear in BOTH the main library and the Pro filter.
-
-  copies = your starting/public copy count.
-  On a static GitHub Pages site, copy-count changes are stored per browser.
-  True global counts require a backend/database.
-*/  
-const crosshairs = [
-  {name:'Green Precision',category:'Other',player:'',isPro:false,image:'https://cdn.phototourl.com/free/2026-09-06-f815dbc4-0644-4cf6-81e0-987c67df4655.png',code:'0;P;c;1;h;0;f;0;0l;2;0o;1;0a;1;0f;0;1b;0',added:'2026-09-06'},
-  {name:'Shuriken',category:'Other',player:'',isPro:false,image:'https://cdn.phototourl.com/free/2026-09-06-ef24e720-2551-4c18-be64-45cca27b061b.png',code:'0;P;c;7;h;0;f;0;0l;4;0o;2;0a;1;0f;0;1t;8;1l;1;1o;1;1a;1;1m;0;1f;0',copies:0,added:'2026-09-06'},
-  {name:'Sakura',category:'Fun',player:'',isPro:false,image:'https://cdn.phototourl.com/free/2026-09-06-3ecdacb9-c928-43bd-8663-2fbf24a24d96.png',code:'0;P;c;8;u;F97AC0FF;o;0.1;b;1;m;1;0t;3;0l;3;0o;1;0a;1;0f;0;1t;1;1l;5;1o;0;1a;0.8;1m;0;1e;0.1',copies:0,added:'2026-09-06'},
-  {name:'Pink X',category:'Fun',player:'',isPro:false,image:'https://cdn.phototourl.com/free/2026-09-06-7ff17a57-5a9d-44fd-8bcd-83303f1df32e.png',code:'0;s;1;P;c;8;u;F8B5E8FF;h;0;d;1;b;1;f;0;0t;6;0l;1;0o;1;0a;1;0f;0;1v;0;1g;1;1o;6;1a;1;1m;0;1f;0;S;c;0;s;0.75;o;1',copies:0,added:'2026-09-06'},
-  {name:'Star of David',category:'Fun',player:'',isPro:false,image:'https://cdn.phototourl.com/free/2026-09-09-5840df0b-3408-47ec-bda3-06295e3d3ffa.png',code:'0;P;c;8;u;000000FF;h;0;b;1;0t;8;0l;0;0v;1;0g;1;0o;1;0a;1;0f;0;1v;3;1g;1;1o;1;1a;1;1m;0;1f;0',copies:0,added:'2026-09-06'},
-
-  /* Example pro entries — add more here with isPro:true */
-
-  {name:'TenZ',category:'pro',player:'TenZ',isPro:true,image:'https://cdn.phototourl.com/free/2026-08-31-8beddda9-408d-4ff3-b5d0-b315f5d99cf5.png',code:'0;s;1;P;c;5;h;0;m;1;0l;4;0o;2;0a;1;0f;0;1b;0;S;c;4;o;1',copies:0,added:'2026-09-06'},
-  {name:'small dot',category:'pro',player:'',isPro:true,image:'https://cdn.phototourl.com/free/2026-09-02-fe0e12b1-537a-4a3e-8d9d-f0c54e6c2863.png',code:'0;P;d;1;f;0;0t;4;0l;1;0o;0;0a;1;0f;0;1b;0',copies:0,added:'2026-09-06'},
-  {name:'Aim bot',category:'pro',player:'',isPro:true,image:'https://cdn.phototourl.com/free/2026-09-03-4de9ed7e-e591-4c5f-aaba-813fc6de20e0.png',code:'0;s;1;P;o;0.1;f;0;s;0;0t;1;0l;2;0o;1;0a;1;0f;0;1b;0',copies:0,added:'2026-09-06'},
-  {name:'nAts',category:'pro',player:'nAts',isPro:true,image:'https://cdn.phototourl.com/free/2026-09-06-7baf8626-9006-420a-aeac-97cb4e1c047b.png',code:'0;P;h;0;f;0;0t;1;0l;3;0o;1;0a;1;0f;0;1b;0',copies:0,added:'2026-09-06'},
-  {name:'Cyan Dot',category:'pro',player:'',isPro:true,image:'https://cdn.phototourl.com/free/2026-09-06-619f8760-3645-4877-a755-af19560355a3.png',code:'0;P;c;5;o;1;d;1;0l;1;0o;1;0a;1;0f;0;1b;0',copies:0,added:'2026-09-06'},
-  {name:'Classic White',category:'other',player:'',isPro:false,image:'https://cdn.phototourl.com/free/2026-09-06-6aa7b586-373f-4d9e-9515-809270a5ca6f.png',code:'0;P;h;0;f;0;0l;4;0o;0;0a;1;0f;0;1b;0',copies:0,added:'2026-09-06'},
-  {name:'underrated cyan',category:'Teams',player:'',isPro:false,image:'https://cdn.phototourl.com/free/2026-09-09-618a7877-6e89-40ec-97b4-d9c8da59b4f6.png',code:'0;s;1;P;c;5;o;0;f;0;0l;2;0v;2;0g;1;0o;1;0a;1;0f;0;1b;0;S;o;0.8',copies:0,added:'2026-09-06'},
-  {name:'Tiny White Dot',category:'pro',player:'',isPro:true,image:'https://cdn.phototourl.com/free/2026-09-06-95345a83-4fc7-4920-a5a0-83924ae44198.png',code:'0;P;h;0;d;1;0b;0;1b;0',copies:0,added:'2026-09-06'},
-
-];
-
-const filters=['All','pro','Fun','Other'];
-let active='All';
-let activeTab='copies';
-const COUNT_KEY='aimvault_copy_counts_v2';
-
-function getCounts(){
-  try{return JSON.parse(localStorage.getItem(COUNT_KEY)||'{}')}catch(e){return {}}
-}
-function countFor(item){
-  const counts=getCounts();
-  return Number(item.copies||0)+Number(counts[item.code]||0);
-}
-function formatCopies(n){
-  n=Number(n)||0;
-  if(n>=1000000)return (n/1000000).toFixed(n%1000000>=100000?1:0)+'M';
-  if(n>=1000)return (n/1000).toFixed(n%1000>=100?1:0)+'K';
-  return String(n);
-}
-function safe(s){
-  return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-}
-function miniPreview(item){
-  const img=item.image
-    ? `<img src="${safe(item.image)}" alt="${safe(item.name)} crosshair" loading="lazy" draggable="false">`
-    : `<div class="image-placeholder">Add image URL</div>`;
-  const badge=item.isPro?'<div class="badge-pro">PRO</div>':'';
-  return `<div class="preview">${badge}${img}</div>`;
-}
-function card(item){
-  const total=countFor(item);
-  const player=item.player?` • ${safe(item.player)}`:'';
-  return `<article class="panel card">
-    ${miniPreview(item)}
-    <h3>${safe(item.name)}</h3>
-    <div class="meta">${safe(item.category)}${player}</div>
-    <code class="code">${safe(item.code)}</code>
-    <div class="copy-count">${formatCopies(total)} ${total===1?'copy':'copies'}</div>
-    <div class="card-actions">
-      <button class="btn btn-dark copy" data-code="${encodeURIComponent(item.code)}">⧉ Copy code</button>
-    </div>
-  </article>`;
-}
-function sorted(list){
-  if(activeTab==='copies') return [...list].sort((a,b)=>countFor(b)-countFor(a));
-  if(activeTab==='recent') return [...list].sort((a,b)=>new Date(b.added)-new Date(a.added));
-  return [...list];
-}
-function render(){
-  const q=document.getElementById('search').value.toLowerCase().trim();
-  const sort=document.getElementById('sort').value;
-
-  let list=crosshairs.filter(x=>{
-    const categoryOk=active==='All'||x.category===active;
-    const searchOk=(x.name+' '+x.category+' '+x.player).toLowerCase().includes(q);
-    return categoryOk&&searchOk;
-  });
-
-  if(sort==='copies') list.sort((a,b)=>countFor(b)-countFor(a));
-  if(sort==='recent') list.sort((a,b)=>new Date(b.added)-new Date(a.added));
-  if(sort==='newest') list.sort((a,b)=>new Date(b.added)-new Date(a.added));
-
-  if(activeTab==='copies' && sort==='recent') list=sorted(list);
-
-  document.getElementById('crosshairGrid').innerHTML=
-    list.length?list.map(card).join(''):'<div class="panel empty">No crosshairs found.</div>';
-
-  document.getElementById('filters').innerHTML=filters.map(x=>
-    `<button class="filter ${x===active?'active':''}" data-filter="${x}">${x}</button>`
-  ).join('');
-
-  document.querySelectorAll('.library-tab').forEach(x=>{
-    x.classList.toggle('active',x.dataset.sort===activeTab);
-  });
-}
-function toast(m){
-  const t=document.getElementById('toast');
-  t.textContent=m;t.classList.add('show');
-  clearTimeout(window.__t);
-  window.__t=setTimeout(()=>t.classList.remove('show'),1600);
-}
-async function copyCode(code){
-  const item=crosshairs.find(x=>x.code===code);
-  try{
-    await navigator.clipboard.writeText(code);
-    if(item){
-      const counts=getCounts();
-      counts[code]=(Number(counts[code])||0)+1;
-      localStorage.setItem(COUNT_KEY,JSON.stringify(counts));
-    }
-    toast('Code copied.');
-    render();
-  }catch(e){
-    window.prompt('Copy code:',code);
-  }
-}
-document.addEventListener('click',e=>{
-  const f=e.target.closest('[data-filter]');
-  if(f){active=f.dataset.filter;render();return}
-  const tab=e.target.closest('.library-tab');
-  if(tab){activeTab=tab.dataset.sort;render();return}
-  const c=e.target.closest('.copy');
-  if(c){copyCode(decodeURIComponent(c.dataset.code));return}
-});
-document.getElementById('search').addEventListener('input',render);
-document.getElementById('sort').addEventListener('change',render);
-document.getElementById('year').textContent=new Date().getFullYear();
-render();
-</script>
-</body>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="/assets/js/supabase-config.js"></script><script src="/assets/js/app.js"></script></body>
 </html>
