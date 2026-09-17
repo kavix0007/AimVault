@@ -29,24 +29,19 @@ window.PLAYER = {
   role:        "",
   region:      "",
 
-  /* ---------- 2. PLAYER PHOTO ----------
-     👉 THIS is the player photo. Paste a direct image link
-        (must end in .jpg / .png / .webp and be publicly reachable).
-        Leave it as PASTE_... and the page shows a clean placeholder. */
-  imageUrl:    "PASTE_PLAYER_IMAGE_URL_HERE",
-  imageCredit: "",                           // optional line under the photo, e.g. "Photo: Riot Games"
-
-  /* ---------- 3. CROSSHAIR CODE ----------
+  /* ---------- 2. CROSSHAIR CODE ----------
      👉 THIS is the code the Copy button copies. Replace the text
         between the quotes. Nothing else. */
   crosshairCode: "PASTE_CROSSHAIR_CODE_HERE",
 
-  /* ---------- 4. CROSSHAIR PREVIEW IMAGE ----------
-     👉 THIS is the crosshair screenshot — NOT the player photo.
-        Two different pictures. Do not swap them. */
+  /* ---------- 3. CROSSHAIR PREVIEW IMAGE ----------
+     👉 The crosshair screenshot shown on the right of the page.
+        It sits on the same wall texture the rest of the site uses,
+        so a transparent PNG of just the crosshair works best.
+        Leave it as PASTE_... and you get a clean placeholder. */
   crosshairImageUrl: "PASTE_CROSSHAIR_IMAGE_URL_HERE",
 
-  /* ---------- 5. PAGE TEXT & SEO ---------- */
+  /* ---------- 4. PAGE TEXT & SEO ---------- */
   pageTitle:       "Demon1 Valorant Crosshair Code & Settings | AimVault",
   metaDescription: "Demon1's Valorant crosshair code, crosshair settings and an in-game preview. Copy the code and import it in one step.",
 
@@ -54,7 +49,7 @@ window.PLAYER = {
 
   whyPopular: "",
 
-  /* ---------- 6. CROSSHAIR SETTINGS ----------
+  /* ---------- 5. CROSSHAIR SETTINGS ----------
      These describe the code above. Leave "" to print "Not available". */
   crosshair: {
     color:         "",
@@ -66,7 +61,7 @@ window.PLAYER = {
     firingError:   ""
   },
 
-  /* ---------- 7. MOUSE & SENSITIVITY ----------
+  /* ---------- 6. MOUSE & SENSITIVITY ----------
      Blank fields print "Not available" instead of a made-up number. */
   gear: {
     sensitivity: "",
@@ -79,14 +74,14 @@ window.PLAYER = {
     keyboard:    ""
   },
 
-  /* ---------- 8. CODE CARD CHIPS ---------- */
+  /* ---------- 7. CODE CARD CHIPS ---------- */
   copies:    "",                  // e.g. "12,400" — leave "" to hide the chip
   addedDate: "",
 
-  /* ---------- 9. LAST VERIFIED ---------- */
+  /* ---------- 8. LAST VERIFIED ---------- */
   lastVerified: "",
 
-  /* ---------- 10. FAQ ----------
+  /* ---------- 9. FAQ ----------
      Only real questions. These also generate the FAQ structured data,
      so never write a question here that is not shown on the page.
      Delete the whole list (leave  faqs: []  ) to hide the FAQ section. */
@@ -97,7 +92,7 @@ window.PLAYER = {
       a: "" }
   ],
 
-  /* ---------- 11. RELATED PLAYER LINKS ----------
+  /* ---------- 10. RELATED PLAYER LINKS ----------
      Add a line for every new player page you create. */
   relatedPlayers: [
     { name: "TenZ",    url: "/tenz/"    },
@@ -157,21 +152,18 @@ window.PLAYER = {
 .pv-facts{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
 .pv-fact{border:1px solid var(--border);background:var(--panel2);border-radius:6px;padding:6px 11px;font:600 12px Inter,sans-serif;color:var(--dim)}
 .pv-fact b{color:var(--text);font-weight:700}
-.pv-intro{max-width:76ch;color:var(--dim);font:15px/1.8 Inter,sans-serif;margin:0}
+.pv-intro{color:var(--dim);font:15px/1.8 Inter,sans-serif;margin:0 0 22px}
 
 .pv-top{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,1fr);gap:22px;align-items:start;margin:26px 0 0}
 .pv-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;overflow:hidden}
 .pv-card-title{font:700 12px Inter,sans-serif;letter-spacing:.06em;color:var(--dim2);padding:13px 18px;border-bottom:1px solid var(--border-soft)}
 
-/* Player photo: fixed desktop area, never stretched, never cropped */
-.pv-photo{position:relative;height:420px;background:#0b1017;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:16px}
-.pv-photo img{width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain;object-position:center;display:block}
-.pv-photo .pv-fallback{position:absolute;inset:16px;display:flex;align-items:center;justify-content:center;text-align:center;border:1px dashed var(--border);border-radius:8px;color:var(--dim2);font:600 13px Inter,sans-serif;padding:20px;line-height:1.6}
-
-/* Crosshair preview: same height so both columns line up on desktop */
-.pv-shot{position:relative;height:420px;background:#141c28;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:20px}
-.pv-shot img{width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain;display:block}
-.pv-shot .pv-fallback{position:absolute;inset:20px;display:flex;align-items:center;justify-content:center;text-align:center;border:1px dashed var(--border);border-radius:8px;color:var(--dim2);font:600 13px Inter,sans-serif;padding:20px}
+/* Crosshair preview. The wall texture is the same /default.webp the rest of
+   the site uses behind crosshair previews, so a transparent PNG still reads. */
+.pv-shot{position:relative;height:420px;background-color:#232d3a;background-image:url('/default.webp');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:20px}
+.pv-shot::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at center,rgba(255,255,255,.07),transparent 48%);pointer-events:none}
+.pv-shot img{position:relative;z-index:1;width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain;display:block}
+.pv-shot .pv-fallback{position:absolute;z-index:2;inset:20px;display:flex;align-items:center;justify-content:center;text-align:center;border:1px dashed rgba(255,255,255,.28);border-radius:8px;background:rgba(12,17,25,.72);color:#c3ccd6;font:600 13px Inter,sans-serif;padding:20px}
 .pv-note{padding:12px 18px;border-top:1px solid var(--border-soft);color:var(--dim2);font:12px/1.6 Inter,sans-serif}
 
 .pv-rows div{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding:11px 18px;border-bottom:1px solid var(--border-soft);font:13px Inter,sans-serif}
@@ -212,8 +204,8 @@ window.PLAYER = {
 .pv-verified{margin:30px 0 10px;color:var(--dim2);font:12px/1.7 Inter,sans-serif;max-width:76ch}
 .btn:focus-visible,a:focus-visible{outline:2px solid var(--accent2);outline-offset:2px}
 
-@media(max-width:1180px){.pv-photo,.pv-shot{height:380px}}
-@media(max-width:1000px){.pv-top,.pv-two{grid-template-columns:1fr}.pv-photo,.pv-shot{height:340px}}
+@media(max-width:1180px){.pv-shot{height:380px}}
+@media(max-width:1000px){.pv-top,.pv-two{grid-template-columns:1fr}.pv-shot{height:340px}.pv-intro{max-width:76ch}}
 @media(max-width:560px){.pv-code{font-size:12px}.pv-actions .btn{flex:1 1 100%}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
@@ -250,20 +242,13 @@ window.PLAYER = {
   <section class="pv-head">
     <h1 class="pv-h1" id="pvH1">Valorant Crosshair Code &amp; Settings</h1>
     <div class="pv-facts" id="pvFacts"></div>
-    <p class="pv-intro" id="pvIntro"></p>
   </section>
 
-  <!-- LEFT: player photo + player info   |   RIGHT: crosshair preview -->
+  <!-- LEFT: player info   |   RIGHT: crosshair preview -->
   <section class="pv-top">
     <div>
+      <p class="pv-intro" id="pvIntro"></p>
       <div class="pv-card">
-        <div class="pv-photo">
-          <img id="pvPhoto" alt="" decoding="async" referrerpolicy="no-referrer" style="display:none">
-          <div class="pv-fallback" id="pvPhotoFallback">Player image not set.<br>Add a URL in <code>PLAYER.imageUrl</code>.</div>
-        </div>
-        <div class="pv-note" id="pvPhotoCredit" style="display:none"></div>
-      </div>
-      <div class="pv-card" style="margin-top:22px">
         <div class="pv-card-title" id="pvInfoTitle">Player information</div>
         <div class="pv-rows" id="pvPlayerRows"></div>
       </div>
@@ -422,26 +407,7 @@ window.PLAYER = {
 
   el('pvIntro').textContent = clean(P.intro);
 
-  /* ---------- player photo (contain, with fallback) ---------- */
-  (function(){
-    var img = el('pvPhoto'), fb = el('pvPhotoFallback');
-    var src = clean(P.imageUrl);
-    if(!src){ return; }
-    fb.style.display = 'none';
-    img.onload = function(){ img.style.display = 'block'; fb.style.display = 'none'; };
-    img.onerror = function(){
-      img.removeAttribute('src');
-      img.style.display = 'none';
-      fb.style.display = 'flex';
-      fb.innerHTML = 'Player image could not be loaded.<br>Check <code>PLAYER.imageUrl</code>.';
-    };
-    img.alt = name + ' — Valorant pro player';
-    img.src = src;
-    var credit = clean(P.imageCredit);
-    if(credit){ var c = el('pvPhotoCredit'); c.textContent = credit; c.style.display = 'block'; }
-  })();
-
-  /* ---------- crosshair preview (separate image, own fallback) ---------- */
+  /* ---------- crosshair preview image (own fallback) ---------- */
   (function(){
     var img = el('pvShot'), fb = el('pvShotFallback');
     var src = clean(P.crosshairImageUrl);
@@ -585,7 +551,7 @@ window.PLAYER = {
     });
     var person = {"@type":"Person","@id": url + '#person', "name": name, "url": url};
     if(clean(P.realName)) person.alternateName = clean(P.realName);
-    if(clean(P.imageUrl)) person.image = clean(P.imageUrl);
+    if(clean(P.crosshairImageUrl)) person.image = clean(P.crosshairImageUrl);
     if(clean(P.team))     person.memberOf = {"@type":"SportsTeam","name": clean(P.team)};
     graph.push(person);
     if(faqs.length){

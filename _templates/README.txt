@@ -48,19 +48,25 @@ ADDING A NEW PLAYER (example: Zekken)
 8. Commit and push. The page is live at https://aimvault.online/zekken/
 
 
-IMAGES
-------
-imageUrl           = the player PHOTO
-crosshairImageUrl  = the crosshair SCREENSHOT
-They are two different pictures. Do not swap them.
+CROSSHAIR PREVIEW IMAGE
+-----------------------
+There is no player photo on these pages. The only image is the crosshair
+preview, set by one line:
 
-Both use object-fit: contain inside a fixed 420px box, so nothing is stretched
-or cropped. If a URL is empty, still says PASTE_..., or fails to load, you get a
-tidy placeholder instead of a broken-image icon, and the layout does not move.
+  crosshairImageUrl: "PASTE_CROSSHAIR_IMAGE_URL_HERE",
 
-Use a direct image link (ending in .jpg, .png or .webp). Links to a web page
-that merely contains an image will not work. If an image host blocks hotlinking,
-save the file into your repo and use a local path such as /assets/img/tenz.webp.
+It sits on the same /default.webp wall texture the rest of the site already
+uses behind crosshair previews, so a transparent PNG of just the crosshair
+looks best. A normal in-game screenshot works too.
+
+Use a direct image link (ending in .png, .jpg or .webp). Links to a web page
+that merely contains an image will not work. If a host blocks hotlinking, save
+the file into your repo and use a local path such as /assets/img/tenz-xhair.png.
+
+The image is centred with object-fit: contain inside a fixed 420px box, so it is
+never stretched or cropped. If the URL is empty, still says PASTE_..., or fails
+to load, you get a "Crosshair preview unavailable" panel instead of a broken
+image icon, and the layout does not move.
 
 
 ABOUT "Not available"
