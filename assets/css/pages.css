@@ -159,8 +159,9 @@ header{position:sticky;top:0;z-index:50;background:rgba(9,13,20,.86);backdrop-fi
 @media(max-width:500px){.wrap{padding:0 14px}.grid{grid-template-columns:1fr}}
 
 /* Manual pro-player page additions */
-.player-photo{min-height:420px;background-size:cover;background-position:center;}
-.player-photo img{width:100%!important;height:100%!important;max-width:100%!important;max-height:420px!important;object-fit:contain!important;}
+.player-photo{min-height:420px;background:#080c12!important;background-image:none!important;background-size:contain;background-position:center;padding:18px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.player-photo img{width:100%!important;height:100%!important;max-width:100%!important;max-height:420px!important;object-fit:contain!important;object-position:center!important;display:block;}
+.player-photo .image-fallback{display:none;position:absolute;inset:18px;align-items:center;justify-content:center;text-align:center;color:var(--dim);font:600 12px Inter;border:1px dashed var(--border);border-radius:8px;padding:20px;}
 .crosshair-code-box{margin-top:18px;padding:16px;border:1px solid var(--border);border-radius:10px;background:var(--panel2);}
 .code-label{font:700 10px Inter;color:var(--dim2);text-transform:uppercase;margin-bottom:9px;}
 .crosshair-code-box .detail-code{display:block;word-break:break-all;margin-bottom:12px;}

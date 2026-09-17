@@ -15,20 +15,27 @@
 <meta property="og:url" content="https://aimvault.online/tenz/">
 <meta property="og:title" content="TenZ Valorant Crosshair Code & Settings | AimVault">
 <meta property="og:description" content="Copy TenZ's current Valorant crosshair code, preview the cyan crosshair, view the settings and learn how to import it in VALORANT.">
-<meta property="og:image" content="https://cdn.phototourl.com/free/2026-08-31-8beddda9-408d-4ff3-b5d0-b315fd99cf5c.png">
+<meta property="og:image" content="https://commons.wikimedia.org/wiki/Special:Redirect/file/SEN_TENZ_2023.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="TenZ Valorant Crosshair Code & Settings | AimVault">
 <meta name="twitter:description" content="Copy TenZ's current Valorant crosshair code, preview the cyan crosshair and view the settings on AimVault.">
-<meta name="twitter:image" content="https://cdn.phototourl.com/free/2026-08-31-8beddda9-408d-4ff3-b5d0-b315fd99cf5c.png">
+<meta name="twitter:image" content="https://commons.wikimedia.org/wiki/Special:Redirect/file/SEN_TENZ_2023.jpg">
 <title>TenZ Valorant Crosshair Code & Settings | AimVault</title>
 <style>
 .player-hero-card{display:grid;grid-template-columns:minmax(220px,360px) 1fr;gap:28px;align-items:stretch}
-.player-photo{min-height:420px;background-size:cover;background-position:center!important}
-.player-photo img{width:100%!important;height:100%!important;max-width:100%!important;max-height:420px!important;object-fit:contain!important}
+.player-photo{min-height:420px;background:#080c12!important;background-image:none!important;background-size:contain!important;background-position:center!important;border:1px solid var(--border);border-radius:10px;padding:18px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.player-photo img{width:100%!important;height:100%!important;max-width:100%!important;max-height:420px!important;object-fit:contain!important;object-position:center!important;display:block!important;position:relative;z-index:2}
+.player-photo .image-fallback{display:none;position:absolute;inset:18px;align-items:center;justify-content:center;text-align:center;color:var(--dim);font:600 12px Inter;border:1px dashed var(--border);border-radius:8px;padding:20px;z-index:1}
 .crosshair-preview{min-height:420px;background:#080c12;border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
 .crosshair-preview::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at center,rgba(0,255,255,.07),transparent 42%)}
 .crosshair-preview img{width:min(180px,45%);height:auto;image-rendering:auto;position:relative;z-index:1}
 .preview-label{position:absolute;left:14px;top:12px;font:700 10px Inter;color:var(--dim2);text-transform:uppercase;letter-spacing:.08em}
+.image-credit{margin:-18px 0 0; font:10px/1.5 Inter;color:var(--dim2)}.image-credit a{color:var(--dim);text-decoration:underline}
+.crosshair-stage{width:180px;height:180px;background:#080c12;position:relative;display:block}
+.crosshair-stage .ch-line{position:absolute;background:#00ffff;display:block;box-shadow:0 0 5px rgba(0,255,255,.28)}
+.crosshair-stage .ch-v{width:6px;height:48px;left:87px}
+.crosshair-stage .ch-h{width:48px;height:6px;top:87px}
+.crosshair-stage .top{top:27px}.crosshair-stage .bottom{bottom:27px}.crosshair-stage .left{left:27px}.crosshair-stage .right{right:27px}
 .verify{display:inline-flex;align-items:center;gap:7px;margin:12px 0 0;padding:7px 10px;border:1px solid var(--border);border-radius:999px;background:var(--panel2);font:11px Inter;color:var(--dim)}
 .verify b{color:#7fe0a2}
 .fact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0}
@@ -67,8 +74,10 @@
 <section class="hero"><div class="wrap"><div class="hero-inner"><div class="eyebrow">TenZ · VALORANT crosshair</div><h1>TenZ Valorant Crosshair Code &amp; Settings</h1><p>Copy TenZ's current cyan Valorant crosshair, preview it, see the individual settings and import the code in seconds.</p><div class="verify"><b>✓ Verified</b> September 14, 2026 · settings can change</div></div></div></section>
 <section class="section"><div class="wrap">
 <div class="player-hero-card">
-  <div class="detail-image player-photo"><img src="https://cdn.phototourl.com/free/2026-08-31-8beddda9-408d-4ff3-b5d0-b315fd99cf5c.png" alt="TenZ Valorant player" width="800" height="800" loading="eager"></div>
-  <div class="crosshair-preview"><span class="preview-label">Crosshair preview</span><img src="/tenz/tenz-crosshair.svg" alt="TenZ cyan Valorant crosshair preview" width="180" height="180"></div>
+  <!-- EDIT THIS IMAGE URL to any direct .jpg/.jpeg/.png/.webp image you own or are licensed to use. -->
+  <div class="detail-image player-photo"><img id="playerPhoto" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/SEN_TENZ_2023.jpg" alt="TenZ Valorant player" width="800" height="800" loading="eager" decoding="async"><div class="image-fallback" id="playerPhotoFallback">TenZ player image could not be loaded.<br>Replace the Image URL in <code>/tenz/index.html</code> with a working direct image URL.</div></div>
+  <p class="image-credit">Player photo: Billgatenguyen, <a href="https://commons.wikimedia.org/wiki/File:SEN_TENZ_2023.jpg" target="_blank" rel="noopener">CC BY 4.0</a>.</p>
+  <div class="crosshair-preview" aria-label="TenZ cyan crosshair preview"><span class="preview-label">Crosshair preview</span><div class="crosshair-stage"><span class="ch-line ch-v top"></span><span class="ch-line ch-v bottom"></span><span class="ch-line ch-h left"></span><span class="ch-line ch-h right"></span></div></div>
 </div>
 <div class="fact-grid">
  <div class="fact"><span>Player</span><strong>TenZ (Tyson Ngo)</strong></div>
@@ -128,6 +137,9 @@
 <script>
 const btn=document.getElementById('playerCopyBtn');
 btn?.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(btn.dataset.code||'');btn.textContent='✓ Copied';setTimeout(()=>btn.textContent='⧉ Copy Code',1400)}catch(e){const ta=document.createElement('textarea');ta.value=btn.dataset.code||'';document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();btn.textContent='✓ Copied';setTimeout(()=>btn.textContent='⧉ Copy Code',1400)}});
+const photo=document.getElementById('playerPhoto');
+const photoFallback=document.getElementById('playerPhotoFallback');
+photo?.addEventListener('error',()=>{photo.style.display='none';if(photoFallback)photoFallback.style.display='flex';});
 document.getElementById('year').textContent=new Date().getFullYear();
 </script>
 </body>
