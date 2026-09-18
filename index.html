@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Favicon Links -->
-<link rel="icon" type="image/png" href="./favicon.png">
-<link rel="apple-touch-icon" href="./favicon.png">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
 <meta name="description" content="Find Valorant crosshair codes, pro player crosshairs, dot crosshairs, small crosshairs, funny crosshairs and more. Preview and copy Valorant crosshair codes instantly with AimVault.">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="theme-color" content="#0c1119">
@@ -61,6 +61,11 @@ body{margin:0;background:
 a{text-decoration:none;color:inherit}
 .wrap{max-width:1240px;margin:auto;padding:0 22px}
 
+/* accessible keyboard focus */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
+  outline:2px solid var(--accent2);outline-offset:2px;border-radius:4px;
+}
+
 header{position:sticky;top:0;z-index:50;background:rgba(9,13,20,.86);backdrop-filter:blur(16px);border-bottom:1px solid var(--border-soft)}
 .nav{height:66px;display:flex;align-items:center;justify-content:space-between;gap:20px}
 .logo{display:flex;align-items:center;gap:9px;font-weight:700;font-size:19px;letter-spacing:-.02em;font-family:Inter,sans-serif}
@@ -99,9 +104,11 @@ header{position:sticky;top:0;z-index:50;background:rgba(9,13,20,.86);backdrop-fi
 .filter.active,.filter:hover{color:var(--accent2);border-color:#4a1e26}
 
 .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-.card{padding:10px;min-width:0;transition:border-color .15s}
+.card{padding:10px;min-width:0;transition:border-color .15s;animation:cardIn .2s ease both}
 .card:hover{border-color:#334252}
-.preview{height:160px;border-radius:6px;background-color:#232d3a;display:flex;align-items:center;justify-content:center;margin-bottom:10px;position:relative;overflow:hidden;border:1px solid var(--border);background-image:url('default.webp');background-size:cover;background-position:center;background-repeat:repeat}
+@keyframes cardIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){.card{animation:none}}
+.preview{height:160px;border-radius:6px;background-color:#232d3a;display:flex;align-items:center;justify-content:center;margin-bottom:10px;position:relative;overflow:hidden;border:1px solid var(--border);background-image:url('/default.webp');background-size:cover;background-position:center;background-repeat:repeat}
 .preview::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at center,rgba(255,255,255,.06),transparent 45%);pointer-events:none}
 .preview img{position:relative;z-index:1;width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain;display:block;image-rendering:pixelated;filter:none}
 .preview .image-placeholder{position:relative;z-index:2;font:700 10px Inter;color:#4f4a43;letter-spacing:.06em;background:rgba(235,230,220,.72);padding:6px 8px;border-radius:5px}
@@ -143,7 +150,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(9,13,20,.86);backdrop-fi
 </style>
 </head>
 <body data-page="library">
-<header><div class="wrap nav"><a class="logo" href="./"><span class="logo-mark"><svg width="17" height="17" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="11" stroke="#ff4655" stroke-width="3"/><line x1="20" y1="1" x2="20" y2="11" stroke="#ff4655" stroke-width="3"/><line x1="20" y1="29" x2="20" y2="39" stroke="#ff4655" stroke-width="3"/><line x1="1" y1="20" x2="11" y2="20" stroke="#ff4655" stroke-width="3"/><line x1="29" y1="20" x2="39" y2="20" stroke="#ff4655" stroke-width="3"/></svg></span>Aim<em>Vault</em></a><nav class="navlinks"><a href="/crosshair-codes/">Crosshairs</a><a href="/pro-crosshairs/">Pro Players</a></nav></div></header>
+<header><div class="wrap nav"><a class="logo" href="/"><span class="logo-mark"><svg width="17" height="17" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="11" stroke="#ff4655" stroke-width="3"/><line x1="20" y1="1" x2="20" y2="11" stroke="#ff4655" stroke-width="3"/><line x1="20" y1="29" x2="20" y2="39" stroke="#ff4655" stroke-width="3"/><line x1="1" y1="20" x2="11" y2="20" stroke="#ff4655" stroke-width="3"/><line x1="29" y1="20" x2="39" y2="20" stroke="#ff4655" stroke-width="3"/></svg></span>Aim<em>Vault</em></a><nav class="navlinks"><a href="/crosshair-codes/">Crosshairs</a><a href="/pro-crosshairs/">Pro Players</a><a href="/guides/">Guides</a></nav></div></header>
 <main>
 <section class="hero"><div class="wrap"><div class="hero-inner">
 <div class="eyebrow">Valorant crosshair library</div>
@@ -163,27 +170,27 @@ popular setups, minimalist designs, dot crosshairs and more.
 
     <div class="toolbar">
       <div class="toolbar-group">
-        <span class="toolbar-label">SHOW:</span>
-        <div class="filters" id="filters"></div>
+        <span class="toolbar-label" id="showLabel">SHOW:</span>
+        <div class="filters" id="filters" role="group" aria-labelledby="showLabel"></div>
       </div>
       <div class="toolbar-group search-group">
-        <span class="toolbar-label">SEARCH FOR:</span>
-        <input id="search" type="search" placeholder="Search...">
+        <span class="toolbar-label" id="searchLabel">SEARCH FOR:</span>
+        <input id="search" type="search" placeholder="Search..." aria-labelledby="searchLabel">
       </div>
       <div class="toolbar-group sort-group">
-        <span class="toolbar-label">SORT BY:</span>
-        <select id="sort">
+        <span class="toolbar-label" id="sortLabel">SORT BY:</span>
+        <select id="sort" aria-labelledby="sortLabel">
           <option value="newest">Newest</option>
         </select>
       </div>
     </div>
 
-    <div class="grid" id="crosshairGrid"></div>
+    <div class="grid" id="crosshairGrid"><div class="panel empty">Loading crosshairs&hellip;</div></div>
   </div>
 </section>
 <section class="section"><div class="wrap"><div class="section-head"><div><h2>Browse by category</h2><p>Every published crosshair is shown automatically in its selected categories.</p></div></div><div class="filters" id="homeCategoryLinks"></div></div></section>
 </main>
 <footer class="footer"><div class="wrap footer-row"><div style="display:flex;align-items:center;gap:9px"><span class="logo-mark" style="width:22px;height:22px;border-radius:5px"><svg width="12" height="12" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="11" stroke="#ff4655" stroke-width="3"/><line x1="20" y1="1" x2="20" y2="11" stroke="#ff4655" stroke-width="3"/><line x1="20" y1="29" x2="20" y2="39" stroke="#ff4655" stroke-width="3"/><line x1="1" y1="20" x2="11" y2="20" stroke="#ff4655" stroke-width="3"/><line x1="29" y1="20" x2="39" y2="20" stroke="#ff4655" stroke-width="3"/></svg></span>© <span id="year"></span> AimVault. Not affiliated with Riot Games.</div><div>Valorant crosshair codes • previews • library</div></div></footer> <div class="toast" id="toast"></div>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="/assets/js/supabase-config.js?v=3"></script><script src="/assets/js/app.js?v=3"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script><script src="/assets/js/supabase-config.js?v=3" defer></script><script src="/assets/js/app.js?v=3" defer></script>
 <script>document.addEventListener("DOMContentLoaded",()=>{const el=document.getElementById("homeCategoryLinks");if(!el)return;const cats=[["pro","Pro"],["dot","Dot"],["cyan","Cyan"],["small","Small"],["funny","Funny"],["minimalist","Minimalist"],["teams","Teams"],["other","Other"]];el.innerHTML=cats.map(([c,l])=>`<a class="filter" href="/crosshairs/${c}/">${l}</a>`).join("")});</script></body>
 </html>

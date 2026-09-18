@@ -2,41 +2,36 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://aimvault.online/</loc></url>
   <url><loc>https://aimvault.online/crosshair-codes/</loc></url>
-  <url><loc>https://aimvault.online/crosshairs/dot/</loc></url>
-  <url><loc>https://aimvault.online/crosshairs/cyan/</loc></url>
-  <url><loc>https://aimvault.online/crosshairs/small/</loc></url>
-  <url><loc>https://aimvault.online/crosshairs/funny/</loc></url>
-  <url><loc>https://aimvault.online/crosshairs/minimalist/</loc></url>
-  <url><loc>https://aimvault.online/crosshairs/pro/</loc></url>
-  <url><loc>https://aimvault.online/crosshairs/teams/</loc></url>
-  <url><loc>https://aimvault.online/crosshairs/other/</loc></url>
   <url><loc>https://aimvault.online/pro-crosshairs/</loc></url>
+  <url><loc>https://aimvault.online/generator.html</loc></url>
   <url><loc>https://aimvault.online/guides/</loc></url>
   <url><loc>https://aimvault.online/guides/how-to-import-valorant-crosshair/</loc></url>
   <url><loc>https://aimvault.online/guides/best-valorant-crosshair/</loc></url>
   <url><loc>https://aimvault.online/guides/best-dot-crosshair/</loc></url>
 
+  <!-- Category pages — now live -->
+  <url><loc>https://aimvault.online/crosshairs/cyan/</loc></url>
+  <url><loc>https://aimvault.online/crosshairs/dot/</loc></url>
+  <url><loc>https://aimvault.online/crosshairs/funny/</loc></url>
+  <url><loc>https://aimvault.online/crosshairs/minimalist/</loc></url>
+  <url><loc>https://aimvault.online/crosshairs/other/</loc></url>
+  <url><loc>https://aimvault.online/crosshairs/pro/</loc></url>
+  <url><loc>https://aimvault.online/crosshairs/small/</loc></url>
+  <url><loc>https://aimvault.online/crosshairs/teams/</loc></url>
+
   <!-- ==========================================================
-       PLAYER PAGES — add one line per player, by hand.
-       Only add a player once the page is actually filled in and
-       its robots tag says index,follow.
-
-       When you add Zekken, paste this under the TenZ line:
-
-       <url><loc>https://aimvault.online/zekken/</loc></url>
-
-       Then aspas:
-
-       <url><loc>https://aimvault.online/aspas/</loc></url>
-
-       Same pattern for every new player: just the folder name.
+       PLAYER PAGES. Only /tenz/ has actually been uploaded and
+       filled in with a real static file so far — it's in this
+       zip. zekken, aspas, demon1 and nats have NOT been received
+       as files yet, so they are NOT in this zip either (see the
+       README). They're left listed here because your live site
+       may already have them; remove a line below if that page
+       doesn't actually exist yet.
        ========================================================== -->
   <url><loc>https://aimvault.online/tenz/</loc></url>
   <url><loc>https://aimvault.online/zekken/</loc></url>
   <url><loc>https://aimvault.online/nats/</loc></url>
   <url><loc>https://aimvault.online/aspas/</loc></url>
-  <url><loc>https://aimvault.online/Demon1/</loc></url>
-
-
+  <url><loc>https://aimvault.online/demon1/</loc></url>
 
 </urlset>
