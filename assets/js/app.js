@@ -41,7 +41,7 @@
       const copied=await copyCode(code);
       if(!copied)throw new Error('Copy failed');
       const count=await recordCopy(b.dataset.id);
-      if(count!==null){document.querySelectorAll(`[data-copy-count-for="${CSS.escape(b.dataset.id||'')}"]`).forEach(el=>el.textContent=`↗ ${count.toLocaleString()} copies`)}
+      if(count!==null){document.querySelectorAll(`[data-copy-count-for="${CSS.escape(b.dataset.id||'')}"]`).forEach(el=>el.textContent=`${count.toLocaleString()} copies`)}
       toast('Code copied.');
     }catch(error){console.error(error);toast('Could not copy code.');}
   });
