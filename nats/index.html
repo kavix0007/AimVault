@@ -3,100 +3,572 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
-<link rel="shortcut icon" href="/favicon.ico">
-<link rel="icon" href="/favicon.ico">
+
+<!-- ==========================================================
+     ✏️  EDIT PLAYER INFORMATION HERE  —  THIS IS THE ONLY
+         BLOCK YOU NORMALLY NEED TO TOUCH.
+         Everything on the page is built from these values.
+         Leave a value as ""  ->  the page prints "Not available".
+
+     TO ADD A NEW PLAYER:
+       1. copy  _templates/player.html
+       2. make a folder named after the player, e.g.  /zekken/
+       3. save the copy inside it as  index.html
+       4. change the values below
+       5. change the 8 lines in the SEO block underneath
+       6. add the URL to sitemap.xml
+     ========================================================== -->
+<script>
+window.PLAYER = {
+
+  /* ---------- 1. WHO ---------- */
+  name:        "nAts",
+  realName:    "Ayaz Akhmetshin",
+  slug:        "nats",                   // must match the folder name:  /nats/
+  team:        "Team Liquid",
+  role:        "In-game Leader (IGL)",
+  region:      "EMEA",
+
+  /* ---------- 2. CROSSHAIR CODE ----------
+     👉 THIS is the code the Copy button copies. Replace the text
+        between the quotes. Nothing else. */
+  crosshairCode: "0;P;c;1;o;1.000;0a;1.000;0l;2;0t;1;0o;2;0f;0;1b;0",
+
+  /* ---------- 3. CROSSHAIR PREVIEW IMAGE ----------
+     👉 The crosshair screenshot shown on the right of the page.
+        It sits on the same wall texture the rest of the site uses,
+        so a transparent PNG of just the crosshair works best.
+        Leave it as PASTE_... and you get a clean placeholder. */
+  crosshairImageUrl: "https://cdn.phototourl.com/member/2026-09-18-112ebc9d-b052-4e01-abb9-da877722e1e0.png",
+
+  /* ---------- 4. PAGE TEXT & SEO ---------- */
+  pageTitle:       "nAts Valorant Crosshair Code & Settings | AimVault",
+  metaDescription: "nAts's Valorant crosshair code, crosshair settings and an in-game preview. Copy the code and import it in one step.",
+
+  intro: "",
+
+  whyPopular: "",
+
+  /* ---------- 5. CROSSHAIR SETTINGS ----------
+     These describe the code above. Leave "" to print "Not available". */
+  crosshair: {
+    color:         "",
+    outlines:      "",
+    centerDot:     "",
+    innerLines:    "",
+    outerLines:    "",
+    movementError: "",
+    firingError:   ""
+  },
+
+  /* ---------- 6. MOUSE & SENSITIVITY ----------
+     Blank fields print "Not available" instead of a made-up number. */
+  gear: {
+    sensitivity: "",
+    dpi:         "",
+    edpi:        "",
+    resolution:  "",
+    aspectRatio: "",
+    pollingRate: "",
+    mouse:       "",
+    keyboard:    ""
+  },
+
+  /* ---------- 7. CODE CARD CHIPS ---------- */
+  copies:    "",                  // e.g. "12,400" — leave "" to hide the chip
+  addedDate: "",
+
+  /* ---------- 8. LAST VERIFIED ---------- */
+  lastVerified: "",
+
+  /* ---------- 9. FAQ ----------
+     Only real questions. These also generate the FAQ structured data,
+     so never write a question here that is not shown on the page.
+     Delete the whole list (leave  faqs: []  ) to hide the FAQ section. */
+  faqs: [
+    { q: "What is nAts's Valorant crosshair code?",
+      a: "" },
+    { q: "What colour is nAts's crosshair?",
+      a: "" }
+  ],
+
+  /* ---------- 10. RELATED PLAYER LINKS ----------
+     Add a line for every new player page you create. */
+  relatedPlayers: [
+    { name: "TenZ",    url: "/tenz/"    },
+    { name: "Zekken",  url: "/zekken/"  },
+    { name: "aspas",   url: "/aspas/"   },
+    { name: "Demon1",  url: "/demon1/"  },
+    { name: "nAts",    url: "/nats/"    }
+  ]
+};
+</script>
+<!-- ====================  END OF EDIT BLOCK  ==================== -->
+
+
+<!-- ==========================================================
+     ✏️  SEO BLOCK — these tags are read by Facebook, Discord and X,
+         which do not run JavaScript. Change the player name, the
+         slug in the two URLs, and the description below.
+         The browser tab and Google are already kept in sync with
+         the PLAYER block above, so this block is the only extra
+         place you need to edit.
+     ========================================================== -->
+<title>nAts Valorant Crosshair Code &amp; Settings | AimVault</title>
+<meta name="description" content="nAts&#x27;s Valorant crosshair code, crosshair settings and an in-game preview. Copy the code and import it in one step.">
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://aimvault.online/nats/">
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="AimVault">
+<meta property="og:url" content="https://aimvault.online/nats/">
+<meta property="og:title" content="nAts Valorant Crosshair Code &amp; Settings | AimVault">
+<meta property="og:description" content="nAts&#x27;s Valorant crosshair code, crosshair settings and an in-game preview. Copy the code and import it in one step.">
+<!-- og:image — swap this for the player photo URL once you have one -->
+<meta property="og:image" content="https://aimvault.online/default.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="nAts Valorant Crosshair Code &amp; Settings | AimVault">
+<meta name="twitter:description" content="nAts&#x27;s Valorant crosshair code, crosshair settings and an in-game preview. Copy the code and import it in one step.">
+<meta name="twitter:image" content="https://aimvault.online/default.webp">
+<!-- ====================  END OF SEO BLOCK  ==================== -->
+
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<meta name="theme-color" content="#0c1119">
 <link rel="stylesheet" href="/assets/css/pages.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
-<!-- EDIT THESE FOR EACH PLAYER PAGE -->
-<meta name="description" content="nAts Valorant crosshair code, preview and settings on AimVault.">
-<meta name="robots" content="index,follow,max-image-preview:large">
-<meta name="theme-color" content="#0c1119">
-<link rel="canonical" href="https://aimvault.online/nats/">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://aimvault.online/nats/">
-<meta property="og:title" content="nAts Valorant Crosshair | AimVault">
-<meta property="og:description" content="nAts Valorant crosshair code, preview and settings on AimVault.">
-<meta property="og:image" content="/default.webp">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nAts Valorant Crosshair | AimVault">
-<meta name="twitter:description" content="nAts Valorant crosshair code, preview and settings on AimVault.">
-<title>nAts Valorant Crosshair | AimVault</title>
+<style>
+/* ===========================================================
+   Player page layout. Desktop-first.
+   All classes are prefixed .pv- so nothing in pages.css
+   or the crosshair library can be affected.
+   You do not need to edit anything in this block.
+   =========================================================== */
+.pv-main{padding-bottom:20px}
+.pv-head{padding:24px 0 4px}
+.pv-h1{font:700 clamp(30px,3.2vw,42px)/1.08 Rajdhani,sans-serif;letter-spacing:-.02em;margin:0 0 10px}
+.pv-facts{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.pv-fact{border:1px solid var(--border);background:var(--panel2);border-radius:6px;padding:6px 11px;font:600 12px Inter,sans-serif;color:var(--dim)}
+.pv-fact b{color:var(--text);font-weight:700}
+.pv-intro{color:var(--dim);font:15px/1.8 Inter,sans-serif;margin:0 0 22px}
+
+.pv-top{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,1fr);gap:22px;align-items:start;margin:26px 0 0}
+.pv-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.pv-card-title{font:700 12px Inter,sans-serif;letter-spacing:.06em;color:var(--dim2);padding:13px 18px;border-bottom:1px solid var(--border-soft)}
+
+/* Crosshair preview. The wall texture is the same /default.webp the rest of
+   the site uses behind crosshair previews, so a transparent PNG still reads. */
+.pv-shot{position:relative;height:420px;background-color:#232d3a;background-image:url('/default.webp');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:20px}
+.pv-shot::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at center,rgba(255,255,255,.07),transparent 48%);pointer-events:none}
+.pv-shot img{position:relative;z-index:1;width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain;display:block}
+.pv-shot .pv-fallback{position:absolute;z-index:2;inset:20px;display:flex;align-items:center;justify-content:center;text-align:center;border:1px dashed rgba(255,255,255,.28);border-radius:8px;background:rgba(12,17,25,.72);color:#c3ccd6;font:600 13px Inter,sans-serif;padding:20px}
+.pv-note{padding:12px 18px;border-top:1px solid var(--border-soft);color:var(--dim2);font:12px/1.6 Inter,sans-serif}
+
+.pv-rows div{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding:11px 18px;border-bottom:1px solid var(--border-soft);font:13px Inter,sans-serif}
+.pv-rows div:last-child{border-bottom:0}
+.pv-rows span{color:var(--dim);white-space:nowrap}
+.pv-rows strong{color:var(--text);font-weight:600;text-align:right}
+
+/* Crosshair code card */
+.pv-codecard{margin:22px 0 0;padding:20px 22px 18px}
+.pv-chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.pv-chip{border:1px solid var(--border);background:var(--panel2);border-radius:6px;padding:5px 10px;font:600 11px Inter,sans-serif;color:var(--dim)}
+.pv-chip b{color:var(--text)}
+.pv-codelabel{font:700 13px Inter,sans-serif;color:var(--text);margin:0 0 9px}
+.pv-code{display:block;background:#0e141d;border:1px solid var(--border);border-radius:8px;color:var(--green);font:14px/1.75 "JetBrains Mono",monospace;padding:16px 18px;word-break:break-all;user-select:all}
+.pv-coderow{display:flex;justify-content:flex-end;margin-top:12px}
+.pv-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;padding-top:16px;border-top:1px solid var(--border-soft)}
+
+.pv-section{padding:34px 0 0}
+.pv-h2{font:700 24px Rajdhani,sans-serif;letter-spacing:-.01em;margin:0 0 14px;padding-bottom:12px;border-bottom:1px solid var(--border-soft)}
+.pv-two{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.pv-prose{max-width:76ch;color:var(--dim);font:15px/1.8 Inter,sans-serif}
+.pv-prose p{margin:0 0 14px}
+.pv-steps{max-width:76ch;color:var(--dim);font:15px/1.8 Inter,sans-serif;margin:0;padding-left:20px}
+.pv-steps li{margin-bottom:8px}
+.pv-steps code{background:var(--panel2);border:1px solid var(--border);border-radius:4px;padding:1px 6px;color:var(--green);font:12px "JetBrains Mono",monospace}
+
+.pv-faq{display:grid;gap:12px;max-width:80ch}
+.pv-faq-item{padding:16px 18px}
+.pv-faq-item h3{margin:0 0 6px;font:600 16px Inter,sans-serif;color:var(--text)}
+.pv-faq-item p{margin:0;color:var(--dim);font:14px/1.75 Inter,sans-serif}
+
+.pv-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.pv-links a{padding:9px 15px;border:1px solid var(--border);border-radius:6px;background:var(--panel2);font:600 12px Inter,sans-serif;color:var(--dim);transition:border-color .15s,color .15s}
+.pv-links a:hover{color:var(--accent2);border-color:#4a1e26}
+.pv-linkgroup{margin-top:18px}
+.pv-linkgroup h3{margin:0 0 9px;font:600 13px Inter,sans-serif;color:var(--dim2)}
+
+.pv-verified{margin:30px 0 10px;color:var(--dim2);font:12px/1.7 Inter,sans-serif;max-width:76ch}
+.btn:focus-visible,a:focus-visible{outline:2px solid var(--accent2);outline-offset:2px}
+
+@media(max-width:1180px){.pv-shot{height:380px}}
+@media(max-width:1000px){.pv-top,.pv-two{grid-template-columns:1fr}.pv-shot{height:340px}.pv-intro{max-width:76ch}}
+@media(max-width:560px){.pv-code{font-size:12px}.pv-actions .btn{flex:1 1 100%}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<script>
+/* Keeps the browser tab title, meta description, canonical and social tags
+   in sync with the PLAYER block above. The static tags below are what
+   Facebook / Discord / X read, so update those too when you change a player. */
+(function(){
+  var P = window.PLAYER || {};
+  function clean(v){ v = (v==null?'':String(v)).trim(); return (!v || v.indexOf('PASTE_')===0) ? '' : v; }
+  function setMeta(sel, value){ if(!value) return; var el=document.querySelector(sel); if(el) el.setAttribute('content', value); }
+  var url = 'https://aimvault.online/' + clean(P.slug) + '/';
+  if(clean(P.pageTitle)) document.title = clean(P.pageTitle);
+  setMeta('meta[name="description"]', clean(P.metaDescription));
+  setMeta('meta[property="og:title"]', clean(P.pageTitle));
+  setMeta('meta[property="og:description"]', clean(P.metaDescription));
+  setMeta('meta[property="og:url"]', url);
+  setMeta('meta[name="twitter:title"]', clean(P.pageTitle));
+  setMeta('meta[name="twitter:description"]', clean(P.metaDescription));
+  var can = document.querySelector('link[rel="canonical"]'); if(can && clean(P.slug)) can.setAttribute('href', url);
+})();
+</script>
 </head>
+
 <body>
 <header><div class="wrap nav"><a class="logo" href="/"><span class="logo-mark"><svg width="17" height="17" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="11" stroke="#ff4655" stroke-width="3"/><line x1="20" y1="1" x2="20" y2="11" stroke="#ff4655" stroke-width="3"/><line x1="20" y1="29" x2="20" y2="39" stroke="#ff4655" stroke-width="3"/><line x1="1" y1="20" x2="11" y2="20" stroke="#ff4655" stroke-width="3"/><line x1="29" y1="20" x2="39" y2="20" stroke="#ff4655" stroke-width="3"/></svg></span>Aim<em>Vault</em></a><nav class="navlinks"><a href="/crosshair-codes/">Crosshairs</a><a href="/pro-crosshairs/" class="active">Pro Players</a><a href="/guides/">Guides</a></nav></div></header>
-<main>
-<nav class="breadcrumbs wrap" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><a href="/pro-crosshairs/">Pro Players</a><span>/</span><span class="current">nAts</span></nav>
 
-<section class="hero"><div class="wrap"><div class="hero-inner">
-<div class="eyebrow">Pro player settings</div>
-<h1>nAts Valorant Crosshair</h1>
-<p>Explore the nAts Valorant crosshair code, preview, settings and import instructions on AimVault.</p>
-</div></div></section>
+<main class="pv-main">
+<nav class="breadcrumbs wrap" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><a href="/pro-crosshairs/">Pro Crosshairs</a><span>/</span><span class="current" id="pvCrumb">Player</span></nav>
 
-<section class="section"><div class="wrap">
-<div class="detail-layout">
-  <div>
-    <div class="detail-image player-photo">
-      <img src="/default.webp" alt="nAts Valorant player" loading="eager">
-    </div>
-  </div>
+<div class="wrap">
 
-  <div class="detail-info">
-    <h2>nAts Crosshair Code</h2>
-    <p class="detail-desc">This is the manually editable nAts page. Add verified nAts crosshair information, code and image URL before publishing it.</p>
+  <section class="pv-head">
+    <h1 class="pv-h1" id="pvH1">Valorant Crosshair Code &amp; Settings</h1>
+    <div class="pv-facts" id="pvFacts"></div>
+  </section>
 
-    <!-- EDIT THE CODE BELOW -->
-    <div class="crosshair-code-box">
-      <div class="code-label">Valorant Crosshair Code</div>
-      <code class="detail-code" id="playerCode">ADD_NATS_CROSSHAIR_CODE_HERE</code>
-      <button class="btn btn-red copy" id="playerCopyBtn" data-code="ADD_NATS_CROSSHAIR_CODE_HERE">⧉ Copy Code</button>
+  <!-- LEFT: player info   |   RIGHT: crosshair preview -->
+  <section class="pv-top">
+    <div>
+      <p class="pv-intro" id="pvIntro"></p>
+      <div class="pv-card">
+        <div class="pv-card-title" id="pvInfoTitle">Player information</div>
+        <div class="pv-rows" id="pvPlayerRows"></div>
+      </div>
     </div>
 
-    <!-- IMAGE URL IS MANUAL. IT IS NOT LOADED FROM SUPABASE. -->
-    <p class="image-source">Crosshair image: <a href="/default.webp" target="_blank" rel="noopener">Open image URL</a></p>
-
-    <h2 class="subheading">nAts Crosshair Settings</h2>
-    <div class="settings-table">
-      <div><span>Color</span><strong>EDIT_THIS</strong></div>
-      <div><span>Outlines</span><strong>EDIT_THIS</strong></div>
-      <div><span>Center Dot</span><strong>EDIT_THIS</strong></div>
-      <div><span>Inner Lines</span><strong>EDIT_THIS</strong></div>
-      <div><span>Outer Lines</span><strong>EDIT_THIS</strong></div>
-      <div><span>Movement Error</span><strong>EDIT_THIS</strong></div>
-      <div><span>Firing Error</span><strong>EDIT_THIS</strong></div>
+    <div class="pv-card">
+      <div class="pv-card-title">Crosshair preview</div>
+      <div class="pv-shot">
+        <img id="pvShot" alt="" decoding="async" referrerpolicy="no-referrer" style="display:none">
+        <div class="pv-fallback" id="pvShotFallback">Crosshair preview unavailable</div>
+      </div>
+      <div class="pv-note">In-game screenshot of this crosshair. Import the code below to get the exact same setup.</div>
     </div>
+  </section>
 
-    <h2 class="subheading">How to Import the nAts Crosshair</h2>
-    <ol class="guide-content" style="padding-left:20px;margin:0">
-      <li>Open Valorant and go to Settings → Crosshair.</li>
-      <li>Choose Import Profile Code.</li>
-      <li>Paste the code shown above.</li>
-      <li>Import and select the new crosshair profile.</li>
+  <!-- Crosshair code card -->
+  <section class="pv-card pv-codecard" id="pvCodeCard">
+    <div class="pv-chips" id="pvChips"></div>
+    <h2 class="pv-codelabel">Crosshair code</h2>
+    <code class="pv-code" id="pvCode"></code>
+    <div class="pv-coderow"><button class="btn btn-red" id="pvCopy" type="button">Copy code</button></div>
+    <div class="pv-actions">
+      <a class="btn btn-dark" id="pvBuilder" href="/generator.html">Open in builder</a>
+      <button class="btn btn-dark" id="pvDownload" type="button">Download code</button>
+      <button class="btn btn-dark" id="pvShare" type="button">Share</button>
+    </div>
+  </section>
+
+  <section class="pv-section">
+    <div class="pv-two">
+      <div class="pv-card">
+        <div class="pv-card-title" id="pvXhairTitle">Crosshair settings</div>
+        <div class="pv-rows" id="pvXhairRows"></div>
+      </div>
+      <div class="pv-card">
+        <div class="pv-card-title" id="pvGearTitle">Mouse &amp; sensitivity settings</div>
+        <div class="pv-rows" id="pvGearRows"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pv-section">
+    <h2 class="pv-h2" id="pvImportTitle">How to import this crosshair</h2>
+    <ol class="pv-steps">
+      <li>Copy the crosshair code above with the <strong>Copy code</strong> button.</li>
+      <li>Launch Valorant and open <strong>Settings</strong> from the menu in the top-right corner.</li>
+      <li>Go to the <strong>Crosshair</strong> tab.</li>
+      <li>Next to <strong>Crosshair Profile</strong>, choose the <strong>Import Profile Code</strong> option.</li>
+      <li>Paste the code and confirm. The crosshair updates instantly in the preview.</li>
+      <li>Optional: save it to an empty profile slot so you can switch back to your old crosshair at any time.</li>
     </ol>
-  </div>
+    <p class="pv-prose" style="margin-top:14px">A full walkthrough with screenshots is in the <a href="/guides/how-to-import-valorant-crosshair/" style="color:var(--accent2)">guide to importing Valorant crosshair codes</a>.</p>
+  </section>
+
+  <section class="pv-section" id="pvWhySection">
+    <h2 class="pv-h2" id="pvWhyTitle">Why players use this crosshair</h2>
+    <div class="pv-prose" id="pvWhy"></div>
+  </section>
+
+  <section class="pv-section" id="pvFaqSection">
+    <h2 class="pv-h2">Frequently asked questions</h2>
+    <div class="pv-faq" id="pvFaq"></div>
+  </section>
+
+  <section class="pv-section">
+    <h2 class="pv-h2">Related Valorant crosshairs</h2>
+    <div class="pv-linkgroup" id="pvRelatedPlayersGroup" style="margin-top:0">
+      <h3>Other pro players</h3>
+      <div class="pv-links" id="pvRelatedPlayers"></div>
+    </div>
+    <div class="pv-linkgroup">
+      <h3>Browse by style</h3>
+      <div class="pv-links">
+        <a href="/crosshair-codes/">All crosshair codes</a>
+        <a href="/pro-crosshairs/">Pro crosshairs</a>
+        <a href="/crosshairs/cyan/">Cyan crosshairs</a>
+        <a href="/crosshairs/dot/">Dot crosshairs</a>
+        <a href="/crosshairs/small/">Small crosshairs</a>
+        <a href="/crosshairs/minimalist/">Minimalist crosshairs</a>
+      </div>
+    </div>
+    <div class="pv-linkgroup">
+      <h3>Guides</h3>
+      <div class="pv-links">
+        <a href="/guides/how-to-import-valorant-crosshair/">How to import a Valorant crosshair</a>
+        <a href="/guides/best-valorant-crosshair/">Best Valorant crosshair</a>
+      </div>
+    </div>
+  </section>
+
+  <p class="pv-verified" id="pvVerified"></p>
+
 </div>
-
-<section class="seo-copy">
-  <h2>About nAts's Valorant Crosshair</h2>
-  <p>Add unique, verified information about nAts and the featured crosshair here.</p>
-
-  <h2>Why Try This Crosshair?</h2>
-  <p>Add a useful explanation of the crosshair style and who may enjoy trying it.</p>
-
-  <h2>More Valorant Crosshair Codes</h2>
-  <p>Looking for more crosshair codes? Browse the <a href="/crosshair-codes/">AimVault Valorant crosshair library</a>, or explore <a href="/crosshairs/pro/">pro crosshairs</a> and <a href="/guides/best-valorant-crosshair/">our guide to the best Valorant crosshairs</a>.</p>
-</section>
-</div></section>
 </main>
-<footer class="footer"><div class="wrap footer-row"><div>© <span id="year"></span> AimVault. Not affiliated with Riot Games.</div><div class="footer-links"><a href="/crosshair-codes/">Crosshair Codes</a><a href="/pro-crosshairs/">Pro Crosshairs</a><a href="/guides/">Guides</a></div></div></footer>
+
+<footer class="footer"><div class="wrap footer-row"><div style="display:flex;align-items:center;gap:9px"><span class="logo-mark" style="width:22px;height:22px;border-radius:5px"><svg width="12" height="12" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="11" stroke="#ff4655" stroke-width="3"/><line x1="20" y1="1" x2="20" y2="11" stroke="#ff4655" stroke-width="3"/><line x1="20" y1="29" x2="20" y2="39" stroke="#ff4655" stroke-width="3"/><line x1="1" y1="20" x2="11" y2="20" stroke="#ff4655" stroke-width="3"/><line x1="29" y1="20" x2="39" y2="20" stroke="#ff4655" stroke-width="3"/></svg></span>© <span id="year"></span> AimVault. Not affiliated with Riot Games.</div><div class="footer-links"><a href="/crosshair-codes/">Crosshair Codes</a><a href="/pro-crosshairs/">Pro Crosshairs</a><a href="/guides/">Guides</a></div></div></footer>
+
 <div class="toast" id="toast"></div>
+
 <script>
-const btn=document.getElementById('playerCopyBtn');
-btn?.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(btn.dataset.code||'');btn.textContent='✓ Copied';setTimeout(()=>btn.textContent='⧉ Copy Code',1400)}catch(e){const ta=document.createElement('textarea');ta.value=btn.dataset.code||'';document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();btn.textContent='✓ Copied';setTimeout(()=>btn.textContent='⧉ Copy Code',1400)}});
-document.getElementById('year').textContent=new Date().getFullYear();
+/* ===========================================================
+   Renderer. Reads the PLAYER block at the top of this file.
+   No database, no Supabase, no network calls.
+   You do not need to edit anything below this line.
+   =========================================================== */
+(function(){
+  var P = window.PLAYER || {};
+
+  function clean(v){
+    v = (v == null ? '' : String(v)).trim();
+    if(!v) return '';
+    if(v.indexOf('PASTE_') === 0) return '';
+    return v;
+  }
+  function show(v){ return clean(v) || 'Not available'; }
+  function esc(s){
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function(m){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m];
+    });
+  }
+  function el(id){ return document.getElementById(id); }
+  function rows(target, pairs){
+    var node = el(target); if(!node) return;
+    node.innerHTML = pairs.map(function(p){
+      return '<div><span>' + esc(p[0]) + '</span><strong>' + esc(show(p[1])) + '</strong></div>';
+    }).join('');
+  }
+  function toast(msg){
+    var t = el('toast'); if(!t) return;
+    t.textContent = msg; t.classList.add('show');
+    clearTimeout(window.__pvToast);
+    window.__pvToast = setTimeout(function(){ t.classList.remove('show'); }, 1800);
+  }
+
+  var name = clean(P.name) || 'Player';
+  var slug = clean(P.slug);
+  var code = clean(P.crosshairCode);
+  var url  = 'https://aimvault.online/' + (slug ? slug + '/' : '');
+  var x    = P.crosshair || {};
+  var g    = P.gear || {};
+
+  /* ---------- headings ---------- */
+  el('pvCrumb').textContent = name;
+  el('pvH1').textContent = name + ' Valorant Crosshair Code & Settings';
+  el('pvInfoTitle').textContent = name + ' player information';
+  el('pvXhairTitle').textContent = name + ' crosshair settings';
+  el('pvGearTitle').textContent = name + ' mouse & sensitivity settings';
+  el('pvImportTitle').textContent = "How to import " + name + "'s crosshair";
+  el('pvWhyTitle').textContent = 'Why players use ' + name + "'s crosshair";
+
+  /* ---------- quick facts row ---------- */
+  var facts = [['Team', P.team], ['Role', P.role], ['Region', P.region]].filter(function(f){ return clean(f[1]); });
+  el('pvFacts').innerHTML = facts.map(function(f){
+    return '<span class="pv-fact">' + esc(f[0]) + ' <b>' + esc(f[1]) + '</b></span>';
+  }).join('');
+
+  el('pvIntro').textContent = clean(P.intro);
+
+  /* ---------- crosshair preview image (own fallback) ---------- */
+  (function(){
+    var img = el('pvShot'), fb = el('pvShotFallback');
+    var src = clean(P.crosshairImageUrl);
+    if(!src){ return; }
+    fb.style.display = 'none';
+    img.onload = function(){ img.style.display = 'block'; fb.style.display = 'none'; };
+    img.onerror = function(){ img.removeAttribute('src'); img.style.display = 'none'; fb.style.display = 'flex'; };
+    img.alt = name + "'s Valorant crosshair preview";
+    img.src = src;
+  })();
+
+  /* ---------- player information table ---------- */
+  rows('pvPlayerRows', [
+    ['Player name', P.name],
+    ['Real name', P.realName],
+    ['Team', P.team],
+    ['Role', P.role],
+    ['Region', P.region]
+  ]);
+
+  /* ---------- crosshair code card ---------- */
+  var chips = [];
+  if(clean(P.copies))    chips.push('<span class="pv-chip">Copies <b>' + esc(P.copies) + '</b></span>');
+  if(clean(P.addedDate)) chips.push('<span class="pv-chip">Added <b>' + esc(P.addedDate) + '</b></span>');
+  if(clean(x.color))     chips.push('<span class="pv-chip">Colour <b>' + esc(x.color) + '</b></span>');
+  el('pvChips').innerHTML = chips.join('');
+
+  el('pvCode').textContent = code || 'No crosshair code set — add one in PLAYER.crosshairCode';
+
+  el('pvBuilder').href = code ? '/generator.html?code=' + encodeURIComponent(code) : '/generator.html';
+
+  el('pvCopy').addEventListener('click', function(){
+    if(!code){ toast('No crosshair code set.'); return; }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(code).then(function(){ toast('Code copied.'); })
+        .catch(function(){ window.prompt('Copy this crosshair code:', code); });
+    } else {
+      window.prompt('Copy this crosshair code:', code);
+    }
+  });
+
+  el('pvDownload').addEventListener('click', function(){
+    if(!code){ toast('No crosshair code set.'); return; }
+    var blob = new Blob([code + '\n'], {type:'text/plain;charset=utf-8'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = (slug || 'valorant') + '-crosshair-code.txt';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1000);
+    toast('Code downloaded.');
+  });
+
+  el('pvShare').addEventListener('click', function(){
+    var data = { title: document.title, text: name + "'s Valorant crosshair code", url: url };
+    if(navigator.share){ navigator.share(data).catch(function(){}); return; }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(function(){ toast('Page link copied.'); })
+        .catch(function(){ window.prompt('Copy this link:', url); });
+    } else { window.prompt('Copy this link:', url); }
+  });
+
+  /* ---------- settings tables ---------- */
+  rows('pvXhairRows', [
+    ['Crosshair colour', x.color],
+    ['Outlines', x.outlines],
+    ['Centre dot', x.centerDot],
+    ['Inner lines', x.innerLines],
+    ['Outer lines', x.outerLines],
+    ['Movement error', x.movementError],
+    ['Firing error', x.firingError]
+  ]);
+  rows('pvGearRows', [
+    ['Sensitivity', g.sensitivity],
+    ['Mouse DPI', g.dpi],
+    ['eDPI', g.edpi],
+    ['Resolution', g.resolution],
+    ['Aspect ratio', g.aspectRatio],
+    ['Polling rate', g.pollingRate],
+    ['Mouse', g.mouse],
+    ['Keyboard', g.keyboard]
+  ]);
+
+  /* ---------- why popular ---------- */
+  var why = clean(P.whyPopular);
+  if(why){
+    el('pvWhy').innerHTML = why.split('\n\n').map(function(p){ return '<p>' + esc(p.trim()) + '</p>'; }).join('');
+  } else {
+    el('pvWhySection').style.display = 'none';
+  }
+
+  /* ---------- FAQ (visible content drives the FAQ structured data) ---------- */
+  var faqs = (P.faqs || []).filter(function(f){ return f && clean(f.q) && clean(f.a); });
+  if(faqs.length){
+    el('pvFaq').innerHTML = faqs.map(function(f){
+      return '<div class="pv-card pv-faq-item"><h3>' + esc(f.q) + '</h3><p>' + esc(f.a) + '</p></div>';
+    }).join('');
+  } else {
+    el('pvFaqSection').style.display = 'none';
+  }
+
+  /* ---------- related players ---------- */
+  var self = '/' + slug + '/';
+  var related = (P.relatedPlayers || []).filter(function(r){
+    return r && clean(r.name) && clean(r.url) && clean(r.url) !== self;   // never link a page to itself
+  });
+  if(related.length){
+    el('pvRelatedPlayers').innerHTML = related.map(function(r){
+      return '<a href="' + esc(r.url) + '">' + esc(r.name) + '</a>';
+    }).join('');
+  } else {
+    el('pvRelatedPlayersGroup').style.display = 'none';
+  }
+
+  /* ---------- verified line ---------- */
+  var lv = clean(P.lastVerified);
+  el('pvVerified').textContent = lv
+    ? 'Last verified: ' + lv + '. Pro players change their crosshair and settings often, so treat this as the setup recorded on that date rather than a permanently current one.'
+    : 'Pro players change their crosshair and settings often, so treat this as a recorded setup rather than a permanently current one.';
+
+  var y = el('year'); if(y) y.textContent = new Date().getFullYear();
+
+  /* ---------- JSON-LD, built from the same values shown on the page ---------- */
+  (function(){
+    var graph = [];
+    graph.push({
+      "@type":"WebPage",
+      "@id": url + '#webpage',
+      "url": url,
+      "name": clean(P.pageTitle) || (name + ' Valorant Crosshair Code & Settings'),
+      "description": clean(P.metaDescription),
+      "isPartOf": {"@type":"WebSite","@id":"https://aimvault.online/#website","url":"https://aimvault.online/","name":"AimVault"}
+    });
+    graph.push({
+      "@type":"BreadcrumbList",
+      "@id": url + '#breadcrumb',
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://aimvault.online/"},
+        {"@type":"ListItem","position":2,"name":"Pro Crosshairs","item":"https://aimvault.online/pro-crosshairs/"},
+        {"@type":"ListItem","position":3,"name":name,"item":url}
+      ]
+    });
+    var person = {"@type":"Person","@id": url + '#person', "name": name, "url": url};
+    if(clean(P.realName)) person.alternateName = clean(P.realName);
+    if(clean(P.crosshairImageUrl)) person.image = clean(P.crosshairImageUrl);
+    if(clean(P.team))     person.memberOf = {"@type":"SportsTeam","name": clean(P.team)};
+    graph.push(person);
+    if(faqs.length){
+      graph.push({
+        "@type":"FAQPage",
+        "@id": url + '#faq',
+        "mainEntity": faqs.map(function(f){
+          return {"@type":"Question","name":clean(f.q),"acceptedAnswer":{"@type":"Answer","text":clean(f.a)}};
+        })
+      });
+    }
+    var s = document.createElement('script');
+    s.type = 'application/ld+json';
+    s.textContent = JSON.stringify({"@context":"https://schema.org","@graph":graph});
+    document.head.appendChild(s);
+  })();
+})();
 </script>
 </body>
 </html>
