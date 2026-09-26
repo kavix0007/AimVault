@@ -15,10 +15,36 @@
     const href=link?` href="${link(item)}"`:'';
     const title=link?`<a${href}>${esc(item.name)}</a>`:esc(item.name);
     const cats=(item.categories||[]).map(c=>categoryLabel(c)).map(esc).join(' • ');
-    return `<article class="panel card"><div class="preview">${badge}${image(item)}</div><h3>${title}</h3><div class="meta">${cats}${item.player?' • '+esc(item.player):''}</div><code class="code">${esc(item.code)}</code><div class="card-actions"><button class="btn btn-dark copy" data-code="${encodeURIComponent(item.code)}">⧉ Copy code</button></div></article>`;
+    return `<article class="panel card"><div class="preview">${badge}${image(item)}</div><h3>${title}</h3><div class="meta">${cats}${item.player?' • '+esc(item.player):''}</div><code class="code">${esc(item.code)}</code><div class="card-actions"><button class="btn btn-dark copy" data-id="${esc(item.id)}" data-code="${encodeURIComponent(item.code)}">⧉ Copy code</button><span class="copy-count" data-copy-count-for="${esc(item.id)}">↗ ${Number(item.copy_count||0).toLocaleString()} copies</span></div></article>`;
   }
   function toast(m){let t=document.getElementById('toast');if(!t){t=document.createElement('div');t.className='toast';t.id='toast';document.body.appendChild(t)}t.textContent=m;t.classList.add('show');clearTimeout(window.__avt);window.__avt=setTimeout(()=>t.classList.remove('show'),1600)}
-  document.addEventListener('click',e=>{const b=e.target.closest('.copy');if(!b)return;const code=decodeURIComponent(b.dataset.code||'');navigator.clipboard?.writeText(code).then(()=>toast('Code copied.')).catch(()=>window.prompt('Copy code:',code))});
+  async function recordCopy(id){
+    if(!client||!id)return null;
+    try{
+      const {data,error}=await client.rpc('increment_crosshair_copy',{p_id:id});
+      if(error)throw error;
+      return Number(data);
+    }catch(error){console.error('Copy count update failed:',error);return null}
+  }
+  async function copyCode(code){
+    if(navigator.clipboard?.writeText){
+      await navigator.clipboard.writeText(code);
+      return true;
+    }
+    const ta=document.createElement('textarea');ta.value=code;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();
+    const ok=document.execCommand('copy');ta.remove();return ok;
+  }
+  document.addEventListener('click',async e=>{
+    const b=e.target.closest('.copy');if(!b)return;
+    const code=decodeURIComponent(b.dataset.code||'');
+    try{
+      const copied=await copyCode(code);
+      if(!copied)throw new Error('Copy failed');
+      const count=await recordCopy(b.dataset.id);
+      if(count!==null){document.querySelectorAll(`[data-copy-count-for="${CSS.escape(b.dataset.id||'')}"]`).forEach(el=>el.textContent=`↗ ${count.toLocaleString()} copies`)}
+      toast('Code copied.');
+    }catch(error){console.error(error);toast('Could not copy code.');}
+  });
   document.addEventListener('DOMContentLoaded',()=>{const y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear()});
   async function getAll(){
     if(!client) return [];
