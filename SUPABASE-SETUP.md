@@ -33,3 +33,8 @@ on conflict (user_id) do nothing;
 8. Save.
 
 The single database row is then automatically displayed on the homepage, `/crosshair-codes/`, the selected `/crosshairs/<category>/` pages, and `/pro-crosshairs/` when Pro is checked. Editing or deleting the row updates/removes it everywhere.
+
+
+## Manual player pages
+
+The player pages (`/tenz/`, `/zekken/`, `/aspas/`, `/demon1/`, `/nats/`) are static HTML files and are maintained separately from the crosshair database. Do not delete or drop any existing player-related tables as part of a website deployment. The main crosshair library and copy counter use the `crosshairs` table.

@@ -16,7 +16,7 @@ Valorant crosshair library built for GitHub Pages + Supabase.
 - Pro checkbox automatically controls the Pro page
 - Add / edit / delete / publish / unpublish
 - Image URL field only
-- No copy counter
+- Persistent live copy counter increments after a successful Copy Code action
 - Public pages show only published crosshairs
 - Admin can manage all crosshairs
 - Duplicate rendering is prevented by database row ID
