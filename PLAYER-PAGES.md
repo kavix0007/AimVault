@@ -1,45 +1,79 @@
-# AimVault Manual Pro Player Pages
+AIMVAULT — MANUAL PRO PLAYER PAGES
+==================================
 
-Player pages are now **100% manual**. They do not use Supabase `player_profiles` and the admin dashboard does not manage players.
+These pages are plain static HTML. They do not use Supabase, they do not use a
+database, and they do not touch your crosshair library or your admin panel.
+If Supabase were switched off completely, /tenz/ would still work perfectly.
 
-## Existing pages
-- `/tenz/`
-- `/zekken/`
-- `/aspas/`
-- `/demon1/`
-- `/nats/`
 
-Only pages with complete, verified content should be added to the sitemap.
+WHAT TO UPLOAD
+--------------
+_templates/player.html      master template (noindex, never linked)
+tenz/index.html             finished TenZ page
+zekken/index.html           starter page (noindex until you fill it in)
+aspas/index.html            starter page (noindex until you fill it in)
+demon1/index.html           starter page (noindex until you fill it in)
+nats/index.html             starter page (noindex until you fill it in)
+sitemap.xml                 replaces your current sitemap.xml
 
-## Add a new player
-1. Copy `_templates/player.html`.
-2. Create a new folder at the root, for example `yay/`.
-3. Put the copied file inside as `yay/index.html`.
-4. Replace every `EDIT`/`PLAYER_` placeholder with that player's real information.
-5. Change the canonical URL to `https://aimvault.online/yay/`.
-6. Add the new URL to `sitemap.xml` after the page is complete.
-7. Add an internal link to the page from `/pro-crosshairs/` or another relevant page.
-8. Commit/push to GitHub Pages.
+Nothing else is changed. index.html, assets/, crosshair-codes/, crosshairs/,
+guides/, admin/, supabase/, robots.txt, CNAME, favicon.png and generator.html
+are all untouched.
 
-## What you can edit on every page
-- Player name
-- URL slug
-- Page title
-- SEO meta description
-- Player image URL
-- Intro text
-- Unique description
-- Crosshair code
-- Crosshair image URL
-- Color
-- Outlines
-- Center dot
-- Inner lines
-- Outer lines
-- Movement error
-- Firing error
-- Long SEO text
-- Why to try the crosshair
 
-## Important
-Do not use a Supabase `player_profiles` table for these pages. Supabase remains responsible for the main crosshair database only. The `player` field on a crosshair can still contain a player name, and cards link to `/<slug>/` automatically.
+THE ONLY TWO PLACES YOU EDIT
+----------------------------
+Open any player page in a text editor. Near the top you will find:
+
+  1. EDIT PLAYER INFORMATION HERE   -> window.PLAYER = { ... }
+     Name, photo URL, crosshair code, crosshair image URL, settings,
+     FAQ, related links. The whole visible page is built from this.
+
+  2. SEO BLOCK                      -> <title>, description, canonical, og:*
+     Facebook, Discord and X do not run JavaScript, so these tags are written
+     out as plain HTML. Change the player name and the slug in the two URLs.
+
+
+ADDING A NEW PLAYER (example: Zekken)
+-------------------------------------
+1. Copy  _templates/player.html
+2. Make a folder called  zekken
+3. Save the copy inside it as  zekken/index.html
+4. In block 1, set  name: "Zekken"  and  slug: "zekken", then fill in the rest
+5. In block 2, change PLAYER NAME to Zekken and player-slug to zekken
+   (3 places: canonical, og:url, and the titles)
+6. Change  <meta name="robots" content="noindex,follow">
+   to       <meta name="robots" content="index,follow,max-image-preview:large">
+7. Add to sitemap.xml:  <url><loc>https://aimvault.online/zekken/</loc></url>
+8. Commit and push. The page is live at https://aimvault.online/zekken/
+
+
+CROSSHAIR PREVIEW IMAGE
+-----------------------
+There is no player photo on these pages. The only image is the crosshair
+preview, set by one line:
+
+  crosshairImageUrl: "PASTE_CROSSHAIR_IMAGE_URL_HERE",
+
+It sits on the same /default.webp wall texture the rest of the site already
+uses behind crosshair previews, so a transparent PNG of just the crosshair
+looks best. A normal in-game screenshot works too.
+
+Use a direct image link (ending in .png, .jpg or .webp). Links to a web page
+that merely contains an image will not work. If a host blocks hotlinking, save
+the file into your repo and use a local path such as /assets/img/tenz-xhair.png.
+
+The image is centred with object-fit: contain inside a fixed 420px box, so it is
+never stretched or cropped. If the URL is empty, still says PASTE_..., or fails
+to load, you get a "Crosshair preview unavailable" panel instead of a broken
+image icon, and the layout does not move.
+
+
+ABOUT "Not available"
+---------------------
+Every blank field prints "Not available" on purpose. TenZ's sensitivity, DPI,
+resolution and mouse are left blank because I could not verify them. Fill them
+in from a source you trust rather than publishing a guess.
+
+His team is also blank for the same reason. His crosshair settings are filled
+in because they are read directly from the crosshair code you supplied.

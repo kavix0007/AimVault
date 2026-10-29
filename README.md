@@ -1,34 +1,39 @@
-# AimVault V2
+# AimVault — SEO-reviewed GitHub Pages package
 
-Valorant crosshair library built for GitHub Pages + Supabase.
+This package preserves the existing static HTML + CSS + JavaScript architecture, Supabase-backed crosshair library, admin pages, generator, and persistent copy counter.
 
-## Stack
-- HTML/CSS/vanilla JavaScript
-- GitHub Pages hosting
-- Supabase PostgreSQL
-- Supabase Auth for the private admin area
-- Image URLs only (no image upload and no Supabase Storage)
+## Deploy
+1. Back up your current GitHub repository first.
+2. Extract this ZIP and preserve the directory structure when uploading.
+3. Commit the files to the repository's publishing branch.
+4. Check GitHub Settings → Pages. Keep the existing custom domain `aimvault.online` and existing DNS records unless GitHub reports a domain/certificate issue.
+5. After deployment, test `/`, `/crosshair-codes/`, `/crosshairs/dot/`, `/tenz/`, and `/generator.html` in a normal browser.
+6. In Google Search Console, inspect the preferred URLs and request indexing after the live test passes.
 
-## Main system
-- One database record per crosshair
-- Select multiple categories when adding a crosshair
-- The same record automatically appears on the homepage and every selected category page
-- Pro checkbox automatically controls the Pro page
-- Add / edit / delete / publish / unpublish
-- Image URL field only
-- Persistent live copy counter increments after a successful Copy Code action
-- Public pages show only published crosshairs
-- Admin can manage all crosshairs
-- Duplicate rendering is prevented by database row ID
+## SEO changes in this package
+- Improved homepage title and description.
+- Expanded the dot-crosshair page with useful explanatory content and import steps aligned with the dot-code search intent.
+- Added short, distinct supporting copy to crosshair category pages.
+- Sitemap now lists indexable, completed pages only; it excludes duplicate TenZ route and unfinished player profiles.
+- Legacy `/pro-crosshairs/tenz/` is `noindex,follow` and canonicalizes to `/tenz/`.
+- Zekken, aspas, Demon1, and nAts pages are `noindex` until their code/settings/content are verified. They do not copy placeholder codes and are not linked from database cards as completed profiles.
+- Supabase config uses the project's public publishable key, not a service-role key.
 
-## GitHub structure
-`index.html` is at the repository root. Public category pages live under `/crosshairs/<category>/`.
+## Important database safety
+- This ZIP does not connect to or modify your live Supabase database.
+- Do not rerun `supabase/schema.sql` on an existing database just to deploy the frontend. The seed section is intended for initial setup and may create duplicate rows if run again.
+- `supabase/copy-count-migration.sql` is only for an existing database that does not yet have the copy counter/RPC; check the current database first and run it only if needed.
+- The TenZ code in the schema seed was aligned with the manually maintained `/tenz/` page for new installations only. This does not update any existing live database row. Compare the live TenZ record in the admin panel before changing it; don't overwrite it without confirming the desired code.
+- No DNS records are changed by this package.
 
-See `SUPABASE-SETUP.md` for database and admin setup.
+## Site paths
+- `/` — homepage
+- `/crosshair-codes/` — full library
+- `/crosshairs/<category>/` — category pages
+- `/pro-crosshairs/` — pro library
+- `/tenz/` — completed static TenZ profile
+- `/zekken/`, `/aspas/`, `/demon1/`, `/nats/` — unverified starter pages, excluded from indexing until completed
+- `/admin/` and `/admin/login/` — private admin panel and login
+- `/generator.html` — crosshair generator
 
-
-## Live Copy Counts
-
-AimVault now displays a persistent copy count on database-backed crosshair cards. A count increases only after a successful Copy Code action. The public site uses the `increment_crosshair_copy(uuid)` Supabase RPC so visitors do not receive database update privileges.
-
-For an existing Supabase project, run `supabase/copy-count-migration.sql` once in the Supabase SQL Editor before deploying the updated files.
+The public Supabase publishable key is intentionally present in the browser configuration. Never put a service-role key, password, or GitHub token in frontend files.

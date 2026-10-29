@@ -9,7 +9,7 @@
   const categoryLabel=c=>CATEGORY_LABELS[c]||String(c||'Other').replace(/\b\w/g,m=>m.toUpperCase());
   const uniq=list=>{const seen=new Set();return (list||[]).filter(x=>x&&x.id&&!seen.has(x.id)&&(seen.add(x.id),true));};
   function playerSlug(name){ return String(name||'').trim().toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
-  function playerLink(item){ const slug=playerSlug(item.player); return slug ? '/'+slug+'/' : null; }
+  function playerLink(item){ const slug=playerSlug(item.player); return slug === 'tenz' ? '/tenz/' : null; }
   function card(item, link){
     const badge=item.is_pro?'<div class="badge-pro">PRO</div>':'';
     const href=link?` href="${link(item)}"`:'';
