@@ -250,3 +250,46 @@ body.site-redesign{background:radial-gradient(900px 500px at 8% -12%,rgba(50,111
   .site-redesign .grid{grid-template-columns:1fr;gap:12px}
   .site-redesign .preview{height:160px}
 }
+
+
+/* Fix: Explore AimVault feature cards */
+.site-redesign .features{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:14px;
+  align-items:stretch;
+}
+.site-redesign .feature{
+  display:block;
+  min-width:0;
+  min-height:140px;
+  padding:20px;
+  box-sizing:border-box;
+  text-decoration:none;
+  background:linear-gradient(150deg,#11223a,#0b182a);
+  border:1px solid var(--border);
+  border-radius:15px;
+}
+.site-redesign .feature strong{
+  display:block;
+  margin:0 0 10px;
+  color:#82baff;
+  font:700 16px Inter,sans-serif;
+}
+.site-redesign .feature p{
+  display:block;
+  margin:0;
+  color:#a5b4ca;
+  font:13px/1.65 Inter,sans-serif;
+}
+.site-redesign .feature:hover{
+  border-color:rgba(111,166,246,.5);
+  background:linear-gradient(150deg,#152945,#0d1d32);
+  transform:translateY(-2px);
+}
+@media(max-width:1000px){
+  .site-redesign .features{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:600px){
+  .site-redesign .features{grid-template-columns:1fr}
+}
