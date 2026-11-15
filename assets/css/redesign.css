@@ -101,3 +101,23 @@ body.site-redesign{background:radial-gradient(900px 500px at 8% -12%,rgba(50,111
 @media(max-width:1100px){.site-redesign .nav{gap:14px}.site-redesign .navlinks a{padding:9px 8px}.site-redesign .global-search{max-width:300px}.site-redesign .grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:850px){.site-redesign .nav{min-height:68px;flex-wrap:wrap;gap:10px}.site-redesign .global-search{order:3;flex:1 1 100%;max-width:none;margin:0 0 12px}.site-redesign .mobile-menu-toggle{display:block;margin-left:auto}.site-redesign .navlinks{display:none;position:absolute;top:68px;left:16px;right:16px;padding:10px;background:#0c1a2d;border:1px solid var(--border);border-radius:14px;box-shadow:0 20px 50px rgba(0,0,0,.4);flex-direction:column;align-items:stretch}.site-redesign .navlinks.is-open{display:flex}.site-redesign .navlinks a{padding:12px}.site-redesign .hero{padding:68px 0 42px}.site-redesign .player-hero-card{grid-template-columns:minmax(0,1fr)}.site-redesign .player-photo{height:320px;max-width:500px}.site-redesign .related-links{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.site-redesign .wrap{width:calc(100% - 32px)}.site-redesign .logo img{width:154px}.site-redesign .hero{padding:56px 0 34px}.site-redesign .hero h1{font-size:clamp(34px,10vw,46px)}.site-redesign .hero p{font-size:14px}.site-redesign .hero-search{flex-direction:column}.site-redesign .hero-search input{min-height:42px}.site-redesign .section{padding:32px 0}.site-redesign .grid{grid-template-columns:minmax(0,1fr);gap:13px}.site-redesign .preview{height:210px}.site-redesign .toolbar{align-items:stretch}.site-redesign .toolbar-group{flex-wrap:wrap}.site-redesign .search-group{flex-basis:100%}.site-redesign .sort-group{width:100%}.site-redesign .sort-group select{width:100%}.site-redesign .fact-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.site-redesign .settings-table>div{grid-template-columns:1fr;gap:5px}.site-redesign .settings-table strong{text-align:left}.site-redesign .related-links{grid-template-columns:1fr}.site-redesign .seo-copy{padding:20px;margin-top:28px}.site-redesign .footer-row{align-items:flex-start;flex-direction:column}.site-redesign .footer-links{gap:12px}.site-redesign .hero:after{right:-300px;opacity:.45}}
+
+/* =========================================================
+   AimVault classic crosshair CARD styling only
+   Other site sections retain the existing V3 theme.
+========================================================= */
+.site-redesign .grid{grid-template-columns:repeat(auto-fill,minmax(178px,1fr));gap:10px;align-items:stretch}
+.site-redesign .card{padding:8px;min-width:0;background:#151e2b;border:1px solid #293646;border-radius:8px;box-shadow:none;transition:transform .18s,border-color .18s,box-shadow .18s}
+.site-redesign .card:hover{transform:translateY(-2px);border-color:#49586a;box-shadow:0 10px 24px rgba(0,0,0,.22)}
+.site-redesign .preview{height:132px;border-radius:5px;background-color:#111821;border:1px solid #303b46;background-image:url('/default.webp');background-size:cover;background-position:center;margin-bottom:9px;overflow:hidden}
+.site-redesign .card h3{font:700 14px Rajdhani,Inter,sans-serif;color:#edf1f6;margin:0 0 3px}
+.site-redesign .card h3 a:hover{color:#ff737d}
+.site-redesign .meta{font:11px/1.45 Rajdhani,Inter,sans-serif;color:#9aa7b5;margin-bottom:8px}
+.site-redesign .code{background:#101a27;border:1px solid #263545;border-radius:5px;color:#79d8c8;font:9px/1.45 'JetBrains Mono',monospace;padding:8px;min-height:38px;margin-bottom:7px;overflow-wrap:anywhere}
+.site-redesign .card-actions{gap:5px;align-items:center}
+.site-redesign .card-actions button,.site-redesign .card-actions a{font-size:11px;padding:7px 8px;border-radius:5px}
+.site-redesign .copy-count{font:9px Rajdhani,Inter,sans-serif;color:#7f8c9b}
+.site-redesign .badge-pro{background:rgba(217,183,123,.14);border:1px solid rgba(217,183,123,.55);color:#e2c58e;border-radius:4px}
+@media(min-width:1200px){.site-redesign .grid{grid-template-columns:repeat(5,minmax(0,1fr))}}
+@media(max-width:850px){.site-redesign .grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:600px){.site-redesign .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.site-redesign .card{padding:7px}.site-redesign .preview{height:112px}.site-redesign .code{font-size:8px;padding:7px}.site-redesign .card-actions button,.site-redesign .card-actions a{font-size:10px;padding:7px 5px}}
