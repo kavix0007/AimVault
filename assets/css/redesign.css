@@ -103,21 +103,103 @@ body.site-redesign{background:radial-gradient(900px 500px at 8% -12%,rgba(50,111
 @media(max-width:600px){.site-redesign .wrap{width:calc(100% - 32px)}.site-redesign .logo img{width:154px}.site-redesign .hero{padding:56px 0 34px}.site-redesign .hero h1{font-size:clamp(34px,10vw,46px)}.site-redesign .hero p{font-size:14px}.site-redesign .hero-search{flex-direction:column}.site-redesign .hero-search input{min-height:42px}.site-redesign .section{padding:32px 0}.site-redesign .grid{grid-template-columns:minmax(0,1fr);gap:13px}.site-redesign .preview{height:210px}.site-redesign .toolbar{align-items:stretch}.site-redesign .toolbar-group{flex-wrap:wrap}.site-redesign .search-group{flex-basis:100%}.site-redesign .sort-group{width:100%}.site-redesign .sort-group select{width:100%}.site-redesign .fact-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.site-redesign .settings-table>div{grid-template-columns:1fr;gap:5px}.site-redesign .settings-table strong{text-align:left}.site-redesign .related-links{grid-template-columns:1fr}.site-redesign .seo-copy{padding:20px;margin-top:28px}.site-redesign .footer-row{align-items:flex-start;flex-direction:column}.site-redesign .footer-links{gap:12px}.site-redesign .hero:after{right:-300px;opacity:.45}}
 
 /* =========================================================
-   AimVault classic crosshair CARD styling only
-   Other site sections retain the existing V3 theme.
+   AimVault classic red crosshair theme — restored globally
+   Visual reference: user's supplied classic AimVault screenshot
 ========================================================= */
+:root{
+  --bg:#0b0f15;--bg2:#101722;--panel:#151e2b;--panel2:#1a2533;
+  --border:#283545;--border-soft:#1d2937;--text:#edf1f6;
+  --dim:#98a5b4;--dim2:#687687;--accent:#ff4655;--accent2:#ff6672;
+  --accent-soft:#321820;--gold:#d9b77b;--green:#5be3cd;
+  --radius:8px;
+}
+body.site-redesign{
+ background:radial-gradient(1000px 560px at 14% -10%,rgba(34,49,68,.42),transparent 58%),
+ radial-gradient(850px 500px at 100% 0%,rgba(54,22,29,.18),transparent 55%),var(--bg);
+ color:var(--text);font-family:Rajdhani,Inter,system-ui,sans-serif;
+}
+.site-redesign header{background:rgba(9,13,20,.94);border-bottom:1px solid #202b38}
+.site-redesign .navlinks a:hover,.site-redesign .navlinks a.active{background:rgba(255,70,85,.10);color:#fff}
+.site-redesign .global-search{background:#111a26;border-color:#293746}
+.site-redesign .global-search:focus-within{border-color:#ff4655;box-shadow:0 0 0 3px rgba(255,70,85,.10)}
+.site-redesign .hero{background:radial-gradient(ellipse at 78% 15%,rgba(255,70,85,.055),transparent 46%);border-bottom-color:#1b2632}
+.site-redesign .hero:after{border-color:rgba(255,70,85,.07);box-shadow:0 0 0 55px rgba(255,70,85,.018),0 0 0 110px rgba(255,70,85,.012)}
+.site-redesign .eyebrow{color:#ff7781}
+.site-redesign .eyebrow:before{background:#ff4655;box-shadow:0 0 13px rgba(255,70,85,.55)}
+.site-redesign .hero h1 em,.site-redesign .hero h1 span{background:none;color:#ff5967;-webkit-text-fill-color:#ff5967}
+.site-redesign .btn-red,.site-redesign .code-card-copy{background:#ff4655;border-color:#ff4655;color:#fff;box-shadow:0 6px 18px rgba(255,70,85,.12)}
+.site-redesign .btn-red:hover,.site-redesign .code-card-copy:hover{background:#ff6672;border-color:#ff6672}
+.site-redesign .btn-dark{background:#182332;border-color:#2a394a;color:#e5ebf2}
+.site-redesign .btn-dark:hover{background:#202d3d;border-color:#536174}
+.site-redesign .panel,.site-redesign .feature,.site-redesign .category-card{background:#151e2b;border:1px solid #293646;border-radius:8px;box-shadow:0 8px 22px rgba(0,0,0,.12)}
 .site-redesign .grid{grid-template-columns:repeat(auto-fill,minmax(178px,1fr));gap:10px;align-items:stretch}
-.site-redesign .card{padding:8px;min-width:0;background:#151e2b;border:1px solid #293646;border-radius:8px;box-shadow:none;transition:transform .18s,border-color .18s,box-shadow .18s}
+.site-redesign .card{padding:8px;background:#151e2b;border:1px solid #293646;border-radius:8px;box-shadow:none}
 .site-redesign .card:hover{transform:translateY(-2px);border-color:#49586a;box-shadow:0 10px 24px rgba(0,0,0,.22)}
-.site-redesign .preview{height:132px;border-radius:5px;background-color:#111821;border:1px solid #303b46;background-image:url('/default.webp');background-size:cover;background-position:center;margin-bottom:9px;overflow:hidden}
+.site-redesign .preview{height:132px;border-radius:5px;background-color:#111821;border:1px solid #303b46;background-image:url('/default.webp');background-size:cover;background-position:center;margin-bottom:9px}
 .site-redesign .card h3{font:700 14px Rajdhani,Inter,sans-serif;color:#edf1f6;margin:0 0 3px}
 .site-redesign .card h3 a:hover{color:#ff737d}
 .site-redesign .meta{font:11px/1.45 Rajdhani,Inter,sans-serif;color:#9aa7b5;margin-bottom:8px}
 .site-redesign .code{background:#101a27;border:1px solid #263545;border-radius:5px;color:#79d8c8;font:9px/1.45 'JetBrains Mono',monospace;padding:8px;min-height:38px;margin-bottom:7px;overflow-wrap:anywhere}
-.site-redesign .card-actions{gap:5px;align-items:center}
-.site-redesign .card-actions button,.site-redesign .card-actions a{font-size:11px;padding:7px 8px;border-radius:5px}
+.site-redesign .card-actions{gap:5px}
+.site-redesign .card-actions button{font-size:11px;padding:7px 8px;border-radius:5px}
 .site-redesign .copy-count{font:9px Rajdhani,Inter,sans-serif;color:#7f8c9b}
 .site-redesign .badge-pro{background:rgba(217,183,123,.14);border:1px solid rgba(217,183,123,.55);color:#e2c58e;border-radius:4px}
+.site-redesign .filter{border:1px solid #2b3948;background:#151e2b;color:#a6b1bd;border-radius:5px}
+.site-redesign .filter:hover,.site-redesign .filter.active{color:#fff;border-color:#ff4655;background:rgba(255,70,85,.12)}
+.site-redesign .toolbar input,.site-redesign .toolbar select{background:#111a26;border-color:#2a3949;border-radius:6px;color:#edf1f6}
+.site-redesign .section-head{border-bottom-color:#26313e}
+.site-redesign .section-head h2,.site-redesign .seo-copy h2{color:#f0f2f5}
+.site-redesign .section-head p,.site-redesign .seo-copy p,.site-redesign .seo-copy li{color:#9aa6b3}
+.site-redesign .breadcrumbs a:hover,.site-redesign .seo-copy a,.site-redesign main a:not(.btn){color:#ff7882}
+.site-redesign .footer{background:#090d13;border-top-color:#202b37;color:#778493}
+.site-redesign .footer-links a:hover{color:#ff7882}
+.site-redesign .toast{background:#182332;border-color:#3b4858}
+.site-redesign .crosshair-code-card,.site-redesign .answer-box,.site-redesign .related-links a{background:#151f2c;border-color:#2a3949}
+.site-redesign .code-card-value,.site-redesign .answer-code{background:#101a27;border-color:#293747;color:#8cddcf}
+.site-redesign .code-card-copy{border-radius:6px}
+.site-redesign .player-hero-card{background:#151e2b;border-color:#293646}
+.site-redesign .logo img{filter:hue-rotate(145deg) saturate(1.12)}
 @media(min-width:1200px){.site-redesign .grid{grid-template-columns:repeat(5,minmax(0,1fr))}}
 @media(max-width:850px){.site-redesign .grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:600px){.site-redesign .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.site-redesign .card{padding:7px}.site-redesign .preview{height:112px}.site-redesign .code{font-size:8px;padding:7px}.site-redesign .card-actions button,.site-redesign .card-actions a{font-size:10px;padding:7px 5px}}
+@media(max-width:600px){.site-redesign .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.site-redesign .card{padding:7px}.site-redesign .preview{height:112px}.site-redesign .code{font-size:8px;padding:7px}.site-redesign .card-actions button{font-size:10px;padding:7px 5px}}
+
+
+/* Card preview clarity patch: keep preview art crisp, full-opacity, and unfiltered. */
+.site-redesign .card .preview{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:160px;
+  overflow:hidden;
+  background-color:#b8b4a8;
+  background-image:url('/default.webp');
+  background-repeat:repeat;
+  background-size:256px 256px;
+  background-position:center;
+  border:1px solid #394454;
+  isolation:isolate;
+}
+.site-redesign .card .preview img{
+  position:relative;
+  z-index:1;
+  display:block;
+  width:100%;
+  height:100%;
+  max-width:none;
+  max-height:none;
+  object-fit:contain;
+  object-position:center;
+  opacity:1;
+  visibility:visible;
+  filter:none;
+  mix-blend-mode:normal;
+  image-rendering:auto;
+  transform:none;
+  backface-visibility:hidden;
+}
+.site-redesign .card .preview::after{
+  content:none;
+}
+.site-redesign .card .preview .badge-pro{z-index:2}
+@media(max-width:600px){.site-redesign .card .preview{height:150px}}
