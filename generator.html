@@ -20,8 +20,8 @@
     --steel:#8a9aa5;
     --steel-dim:#5a6a75;
     --paper:#ece8e1;
-    --red:#ff4655;
-    --red-dim:#9c2530;
+    --red:#6f8cff;
+    --red-dim:#3b4f9f;
     --teal:#4ce0d2;
     --shadow: 0 20px 50px rgba(0,0,0,.45);
   }
@@ -115,7 +115,7 @@
   }
   input[type=range]::-webkit-slider-thumb{
     -webkit-appearance:none;width:14px;height:14px;background:var(--red);border-radius:1px;cursor:pointer;
-    box-shadow:0 0 0 3px rgba(255,70,85,.18);
+    box-shadow:0 0 0 3px rgba(104,137,255,.18);
   }
   input[type=range]::-moz-range-thumb{width:14px;height:14px;background:var(--red);border:none;border-radius:1px;cursor:pointer;}
 
@@ -214,17 +214,16 @@
   .added-segment button.active{background:#59616c;color:#fff;}
 
 </style>
+<link rel="stylesheet" href="/assets/css/redesign.css">
 <link rel="canonical" href="https://aimvault.online/generator.html">
+<meta property="og:site_name" content="AimVault">
 </head>
-<body>
+<body class="site-redesign generator-redesign">
 <div class="wrap">
 
   <div class="brandbar">
-    <a class="brand" href="index.html" aria-label="AimVault home">
-      <span class="brand-mark" aria-hidden="true">AV</span>
-      <span class="brand-name">Aim<span>Vault</span></span>
-    </a>
-    <a class="back-home" href="index.html">← AimVault Home</a>
+    <a class="brand" href="/" aria-label="AimVault home"><img src="/assets/img/aimvault-wordmark.png" alt="AimVault" width="176" height="42"></a>
+    <a class="back-home" href="/">← AimVault Home</a>
   </div>
 
   <div class="hdr">
@@ -1196,5 +1195,6 @@ updateTabsEnabled();
 syncUIFromState();
 pushCode();
 </script>
+<script src="/assets/js/redesign.js" defer></script>
 </body>
 </html>

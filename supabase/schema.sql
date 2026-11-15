@@ -103,7 +103,8 @@ for delete to authenticated using (public.is_admin());
 
 -- Existing AimVault entries. Optional seed data; do not run this section again if the rows are already in your live database.
 insert into public.crosshairs (name,code,image_url,categories,player,is_pro,published,created_at)
-values
+select v.name,v.code,v.image_url,v.categories,v.player,v.is_pro,v.published,v.created_at
+from (values
 ('Green Precision','0;P;c;1;h;0;f;0;0l;2;0o;1;0a;1;0f;0;1b;0','https://cdn.phototourl.com/free/2026-09-06-f815dbc4-0644-4cf6-81e0-987c67df4655.png',ARRAY['other'],'',false,true,'2026-09-06'),
 ('Shuriken','0;P;c;7;h;0;f;0;0l;4;0o;2;0a;1;0f;0;1t;8;1l;1;1o;1;1a;1;1m;0;1f;0','https://cdn.phototourl.com/free/2026-09-06-ef24e720-2551-4c18-be64-45cca27b061b.png',ARRAY['other'],'',false,true,'2026-09-06'),
 ('Sakura','0;P;c;8;u;F97AC0FF;o;0.1;b;1;m;1;0t;3;0l;3;0o;1;0a;1;0f;0;1t;1;1l;5;1o;0;1a;0.8;1m;0;1e;0.1','https://cdn.phototourl.com/free/2026-09-06-3ecdacb9-c928-43bd-8663-2fbf24a24d96.png',ARRAY['funny'],'',false,true,'2026-09-06'),
@@ -117,7 +118,8 @@ values
 ('Classic White','0;P;h;0;f;0;0l;4;0o;0;0a;1;0f;0;1b;0','https://cdn.phototourl.com/free/2026-09-06-6aa7b586-373f-4d9e-9515-809270a5ca6f.png',ARRAY['other','minimalist'],'',false,true,'2026-09-06'),
 ('underrated cyan','0;s;1;P;c;5;o;0;f;0;0l;2;0v;2;0g;1;0o;1;0a;1;0f;0;1b;0;S;o;0.8','https://cdn.phototourl.com/free/2026-09-09-618a7877-6e89-40ec-97b4-d9c8da59b4f6.png',ARRAY['teams','cyan'],'',false,true,'2026-09-06'),
 ('Tiny White Dot','0;P;h;0;d;1;0b;0;1b;0','https://cdn.phototourl.com/free/2026-09-06-95345a83-4fc7-4920-a5a0-83924ae44198.png',ARRAY['pro','dot','small','minimalist'],'',true,true,'2026-09-06')
-on conflict do nothing;
+) as v(name,code,image_url,categories,player,is_pro,published,created_at)
+where not exists (select 1 from public.crosshairs c where lower(c.name)=lower(v.name) and c.code=v.code); 
 
 
 -- ADMIN SETUP (run this AFTER creating your admin user in Supabase Authentication > Users)

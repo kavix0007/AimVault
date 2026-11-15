@@ -12,8 +12,9 @@
   function playerLink(item){ const slug=playerSlug(item.player); return slug === 'tenz' ? '/tenz/' : null; }
   function card(item, link){
     const badge=item.is_pro?'<div class="badge-pro">PRO</div>':'';
-    const href=link?` href="${link(item)}"`:'';
-    const title=link?`<a${href}>${esc(item.name)}</a>`:esc(item.name);
+    const destination=typeof link==='function'?link(item):null;
+    const href=destination?` href="${esc(destination)}"`:'';
+    const title=destination?`<a${href}>${esc(item.name)}</a>`:esc(item.name);
     const cats=(item.categories||[]).map(c=>categoryLabel(c)).map(esc).join(' • ');
     return `<article class="panel card"><div class="preview">${badge}${image(item)}</div><h3>${title}</h3><div class="meta">${cats}${item.player?' • '+esc(item.player):''}</div><code class="code">${esc(item.code)}</code><div class="card-actions"><button class="btn btn-dark copy" data-id="${esc(item.id)}" data-code="${encodeURIComponent(item.code)}">⧉ Copy code</button><span class="copy-count" data-copy-count-for="${esc(item.id)}">↗ ${Number(item.copy_count||0).toLocaleString()} copies</span></div></article>`;
   }
@@ -58,6 +59,8 @@
     try{
       const all=await getAll();
       const filtersEl=document.getElementById('filters'), search=document.getElementById('search'), sort=document.getElementById('sort');
+      const initialQuery=new URLSearchParams(location.search).get('q');
+      if(search && initialQuery && !search.value) search.value=initialQuery;
       let available=CATEGORY_ORDER.filter(c=>all.some(x=>(x.categories||[]).includes(c)));
       available=[...available,...Array.from(new Set(all.flatMap(x=>x.categories||[]))).filter(c=>!CATEGORY_ORDER.includes(c))];
       const cats=['All',...available]; let active='All';

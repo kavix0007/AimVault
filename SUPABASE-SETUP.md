@@ -38,3 +38,7 @@ The single database row is then automatically displayed on the homepage, `/cross
 ## Manual player pages
 
 The player pages (`/tenz/`, `/zekken/`, `/aspas/`, `/demon1/`, `/nats/`) are static HTML files and are maintained separately from the crosshair database. Do not delete or drop any existing player-related tables as part of a website deployment. The main crosshair library and copy counter use the `crosshairs` table.
+
+
+## V3 redesign deployment
+The redesign changes frontend files only. It does not require a database migration. Do not rerun the seed section of `supabase/schema.sql` on an existing project. The copy-count migration is only for databases where the `copy_count` column or RPC is missing. The current player pages are static HTML and do not read from `player_profiles`.

@@ -1,39 +1,47 @@
-# AimVault — SEO-reviewed GitHub Pages package
+# AimVault V3 — redesigned GitHub Pages package
 
-This package preserves the existing static HTML + CSS + JavaScript architecture, Supabase-backed crosshair library, admin pages, generator, and persistent copy counter.
+This package refreshes AimVault's visual identity and public-site experience while retaining the static HTML + CSS + JavaScript architecture, Supabase-backed crosshair library, admin dashboard, generator and persistent copy-count RPC.
 
-## Deploy
-1. Back up your current GitHub repository first.
-2. Extract this ZIP and preserve the directory structure when uploading.
-3. Commit the files to the repository's publishing branch.
-4. Check GitHub Settings → Pages. Keep the existing custom domain `aimvault.online` and existing DNS records unless GitHub reports a domain/certificate issue.
-5. After deployment, test `/`, `/crosshair-codes/`, `/crosshairs/dot/`, `/tenz/`, and `/generator.html` in a normal browser.
-6. In Google Search Console, inspect the preferred URLs and request indexing after the live test passes.
+## What's new
+- New blue/violet AimVault branding derived from the supplied logo artwork.
+- Redesigned responsive header, search, hero, cards, filters, category pages, guides and footer.
+- Mobile navigation and site-wide search that forwards to the crosshair library.
+- Homepage discovery sections and stronger category-specific supporting copy.
+- Fixed a card-link bug that could create `href="null"` for crosshairs associated with unlinked/unverified players.
+- Fixed TenZ page desktop minimum widths that caused horizontal overflow on mobile.
+- Improved category meta descriptions and refreshed sitemap with canonical, indexable pages only.
+- Preserved the Supabase client configuration, admin routes, generator, data model and copy-count flow.
 
-## SEO changes in this package
-- Improved homepage title and description.
-- Expanded the dot-crosshair page with useful explanatory content and import steps aligned with the dot-code search intent.
-- Added short, distinct supporting copy to crosshair category pages.
-- Sitemap now lists indexable, completed pages only; it excludes duplicate TenZ route and unfinished player profiles.
-- Legacy `/pro-crosshairs/tenz/` is `noindex,follow` and canonicalizes to `/tenz/`.
-- Zekken, aspas, Demon1, and nAts pages are `noindex` until their code/settings/content are verified. They do not copy placeholder codes and are not linked from database cards as completed profiles.
-- Supabase config uses the project's public publishable key, not a service-role key.
+## Deploy safely
+1. Download and extract this ZIP.
+2. Back up your current GitHub repository before deploying.
+3. Review the included QA notes and compare the file list with your repository.
+4. Upload the extracted contents while preserving all folders and paths.
+5. Deploy through the existing GitHub Pages publishing branch.
+6. Test homepage, library, category pages, TenZ, generator, admin login and mobile layout.
+7. In Search Console, inspect each canonical URL and request indexing after the live test passes.
 
-## Important database safety
-- This ZIP does not connect to or modify your live Supabase database.
-- Do not rerun `supabase/schema.sql` on an existing database just to deploy the frontend. The seed section is intended for initial setup and may create duplicate rows if run again.
-- `supabase/copy-count-migration.sql` is only for an existing database that does not yet have the copy counter/RPC; check the current database first and run it only if needed.
-- The TenZ code in the schema seed was aligned with the manually maintained `/tenz/` page for new installations only. This does not update any existing live database row. Compare the live TenZ record in the admin panel before changing it; don't overwrite it without confirming the desired code.
-- No DNS records are changed by this package.
+## SEO indexing policy
+The sitemap contains 17 canonical pages that are intended to be indexable. TenZ is the only completed, manually maintained player page currently included. Zekken, aspas, Demon1 and nAts remain `noindex` while their profile codes/settings/content are unverified. Do not add unfinished pages to the sitemap merely to increase its URL count.
 
-## Site paths
-- `/` — homepage
-- `/crosshair-codes/` — full library
-- `/crosshairs/<category>/` — category pages
-- `/pro-crosshairs/` — pro library
-- `/tenz/` — completed static TenZ profile
-- `/zekken/`, `/aspas/`, `/demon1/`, `/nats/` — unverified starter pages, excluded from indexing until completed
-- `/admin/` and `/admin/login/` — private admin panel and login
-- `/generator.html` — crosshair generator
+## Supabase safety
+- The website continues to use the existing public Supabase publishable key in `assets/js/supabase-config.js`. This is designed for browser use; never place a service-role or secret key in frontend files.
+- This ZIP does not connect to or modify your live Supabase database or DNS.
+- Do not rerun `supabase/schema.sql` on a working database just to deploy the redesign. The seed section is for initial setup only. Review it before running on any database.
+- `supabase/copy-count-migration.sql` is only for an existing database that lacks the copy counter/RPC; inspect the live schema first.
+- The `player_profiles` table is retained in the schema for compatibility, but the current static player pages are not rendered from it.
 
-The public Supabase publishable key is intentionally present in the browser configuration. Never put a service-role key, password, or GitHub token in frontend files.
+## Main routes
+- `/` homepage
+- `/crosshair-codes/` full library
+- `/crosshairs/<category>/` category pages
+- `/pro-crosshairs/` Pro-tagged library
+- `/tenz/` completed manual player profile
+- `/zekken/`, `/aspas/`, `/demon1/`, `/nats/` unverified starter pages (noindex)
+- `/generator.html` crosshair generator
+- `/admin/` and `/admin/login/` admin dashboard and login
+
+## Brand assets
+- `assets/img/aimvault-wordmark.png` horizontal wordmark
+- `assets/img/aimvault-icon.png` square icon
+- `favicon.png` and `favicon.ico` updated from the supplied logo
